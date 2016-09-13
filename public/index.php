@@ -1,7 +1,6 @@
 <?php
 require('../includes/connect.php');
 require('../includes/header.php');
-$_SESSION['title'] = 'Home';
 
 $sql = "SELECT
             cat_id,

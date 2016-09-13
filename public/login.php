@@ -3,7 +3,6 @@ require('../includes/connect.php');
 require('../includes/header.php');
 require("../includes/function.php");
 $alert=array();
-$_SESSION['title'] = 'Login';
 // $title = 'Login';
 if(isset($_SESSION['signed_in'])&&$_SESSION['signed_in']==true)
 {

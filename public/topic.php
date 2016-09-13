@@ -2,7 +2,6 @@
 //create_cat.php
 require('../includes/connect.php');
 require('../includes/header.php');
-$_SESSION['title']='Forum';
 $topi=mysqli_real_escape_string($connection,$_GET['id']);
 
 $sql = "SELECT topic_id,topic_subject

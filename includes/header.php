@@ -7,7 +7,7 @@ session_start();
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="description" content="A short description." />
     <meta name="keywords" content="put, keywords, here" />
-    <title><?php echo $_SESSION['title'];?></title>
+    <title>CiTE</title>
     
     <link href="../public/css/bootstrap.min.css" rel="stylesheet">
     <link href="../public/css/font-awesome.min.css" rel="stylesheet">
