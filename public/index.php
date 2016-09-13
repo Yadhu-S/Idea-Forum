@@ -1,6 +1,7 @@
 <?php
 require('../includes/connect.php');
 require('../includes/header.php');
+require_once __DIR__ . "/config.php";
 
 $sql = "SELECT
             cat_id,
@@ -51,9 +52,11 @@ else
                             <h5><?php 
                                 echo '<a id="hey" href="topic.php?id=' . $row['topic_id'] . '" style="text-decoration: none;"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp' .$row['topic_subject'].'</a>'; 
                                 ?>
-                                <div class="rating-stars pull-right">
+                                <div class="pull-right">
                                     <span >
-                                        
+                                        <?php
+                                            echo $star->getRating("userChoose size-1");
+                                        ?>
                                     </span>
                                 </div>                                    
                             </h5>
