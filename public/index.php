@@ -56,7 +56,12 @@ else
                                 <div class="pull-right">
                                     <span >
                                         <?php
-                                            echo $star->getRating("userChoose size-3");
+                                            if(!isset($_SESSION['user_id']))
+                                            {
+                                                echo $star->getRating("size-3");
+                                            }
+                                            else
+                                                echo $star->getRating("userChoose size-3");
                                         ?>
                                     </span>
                                 </div>                                    

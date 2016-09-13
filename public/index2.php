@@ -1,9 +1,9 @@
 <?php
 // Generate a user ID for the session only
 session_start();
-if(!isset($_SESSION['user_id'])){
-  $_SESSION['user_id'] = rand(0, 1024);
-}
+
+  $_SESSION['user_id'] = "ferico";
+
 ?>
 <!DOCTYPE html>
 <html>
