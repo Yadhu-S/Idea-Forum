@@ -1,0 +1,150 @@
+ 
+/* begin table styles */
+
+body {
+    margin: auto;
+    width: 100%;
+}
+/* bubble */
+   .bubble {
+    position: relative;
+    width: 75%;
+    margin-left: 10%;
+    height: auto;
+    width: 75%;
+    padding: 10px;
+    background: #BDBDBD;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+  .bubble:after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 2px;
+    border-style: solid;
+    border-width: 0 15px 15px;
+    border-color: #BDBDBD transparent;
+    display: block;
+    width: 0;
+    z-index: 1;
+}
+
+
+
+.main-items {
+    margin-top:10px;
+    margin-bottom: 0;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.main-items h4 a, .main-items h5 a:hover, .main-items h5 a:active, .main-items h4 a:visited {
+    color:  #E0E0E0;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+.main-items h4 {
+    margin:0; 
+    background: #0277BD;
+    color: white;
+    border-left: 3px solid #BDBDBD;
+    border-bottom: 3px solid #BDBDBD;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 5px 5px 5px 7px;
+}
+
+.sub-items {
+    list-style-type: none;
+    margin-top: 10px;
+    padding-left: 0;
+}
+
+.sub-items .sub-item {
+    color: #212121;
+    padding-top: 1px;
+    padding-left: 18px;
+    background: #E0E0E0;
+    border: 1px solid #BDBDBD;
+    
+}
+.drop{
+    color: white;
+    background: #424242;
+    padding-left: 55px;
+
+}
+.sub-items .sub-item span {
+    color: #828282;
+}
+.had{
+    color: #212121;
+}
+.usrep{
+    
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-decoration: none;
+    color: white;
+    background: #0277BD;
+    margin-left: 10%;
+    width: 120px;
+    padding-left: 20px;
+}
+.imp{
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-decoration: none;
+    color: white;
+    background: #D50000;
+    margin-left: 10%;
+    width: 120px;
+    padding-left: 20px;
+}
+
+.top_cont{
+    margin-left: 10%;
+    width: 75%;
+}
+#p{
+    
+    border-bottom: 3px solid #BDBDBD;
+}
+#dat{
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+}
+
+#hey{
+    color: #757575;
+}
+
+.rating-stars {
+    margin-right: 9px;
+}
+
+.rating-stars .star {
+    cursor: pointer;
+}
+
+.rating-stars .star .fa-star {
+    display: none;
+}
+
+.rating-stars .selected .fa-star-o {
+    display: none;
+}
+
+.rating-stars .selected .fa-star-o {
+    display: inline;
+}
+
+    /*list-style-type: none;
+    padding-left: 18px;*/
