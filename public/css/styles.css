@@ -125,26 +125,5 @@ body {
 #hey{
     color: #757575;
 }
-
-.rating-stars {
-    margin-right: 9px;
-}
-
-.rating-stars .star {
-    cursor: pointer;
-}
-
-.rating-stars .star .fa-star {
-    display: none;
-}
-
-.rating-stars .selected .fa-star-o {
-    display: none;
-}
-
-.rating-stars .selected .fa-star-o {
-    display: inline;
-}
-
     /*list-style-type: none;
     padding-left: 18px;*/
