@@ -9,6 +9,10 @@ session_start();
     <meta name="keywords" content="put, keywords, here" />
     <title>CiTE</title>
     
+    <script src="../public/js/jquery.min.js"></script>
+    <script src="../public/js/Fr.star.js"></script>
+    <script src="../public/js/rate.js"></script>
+    <link rel="stylesheet" href="../public/css/Fr.star.css" />
     <link href="../public/css/bootstrap.min.css" rel="stylesheet">
     <link href="../public/css/font-awesome.min.css" rel="stylesheet">
     <link href="../public/css/metisMenu.min.css" rel="stylesheet">

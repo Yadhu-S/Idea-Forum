@@ -2,6 +2,7 @@
 require('../includes/connect.php');
 require('../includes/header.php');
 require_once __DIR__ . "/config.php";
+$star->id = "index_page";
 
 $sql = "SELECT
             cat_id,
@@ -55,7 +56,7 @@ else
                                 <div class="pull-right">
                                     <span >
                                         <?php
-                                            echo $star->getRating("userChoose size-1");
+                                            echo $star->getRating("userChoose size-3");
                                         ?>
                                     </span>
                                 </div>                                    

@@ -2,8 +2,7 @@
 </div><!-- wrapper -->
 </div>
 <div id="footer"></div>
-    <!-- jQuery -->
-    <script src="../public/js/jquery.min.js"></script>
+  
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../public/js/bootstrap.min.js"></script>
