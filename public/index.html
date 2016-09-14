@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN">
+<html>
+<head>
+    <link href="css/rating.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+</head>
+<body>
+<div id="starter">						
+	<form name = "starrate">
+	       <span class="star-rating">
+	             <input type="radio" name="rating" value="1"><i></i>
+	             <input type="radio" name="rating" value="2"><i></i>
+	             <input type="radio" name="rating" value="3"><i></i>
+	             <input type="radio" name="rating" value="4"><i></i>
+	             <input type="radio" name="rating" value="5"><i></i>
+	       </span>
+	<strong class="choice">Choose a rating</strong>   
+</form>
+</div>
+<script type="text/javascript">
+ document.starrate.rating.value="2";
+</script>
+<script type="text/javascript">
+   $(':radio').change(
+	 function(){
+	 	$('.choice').text( this.value + ' stars' );
+	 } 
+	)
+</script>
+</body>
+</html>
