@@ -25,13 +25,6 @@ else
     }
     else
     {
-        //prepare the table
-        // echo '<table border="1">
-        //       <tr>
-        //         <th>Category</th>
-        //         <th>Last topic</th>
-        //       </tr>'; 
-             
         while($row = mysqli_fetch_assoc($result))
         { 
         $sql_topic = "SELECT   topic_id,topic_subject,topic_date,topic_cat
@@ -77,14 +70,6 @@ else
             </ol>
         </div>
         <?php
-            // echo '<tr>';
-            //     echo '<td class="leftpart">';
-            //         echo '<h3><a href="category.php?id='.$row['cat_id'].'">' . $row['cat_name'] . '</a></h3>' . $row['cat_description'];
-            //     echo '</td>';
-            //     echo '<td class="rightpart">';
-            //                 echo '<a href="topic.php?id=">Topic subject</a> at 10-10';
-            //     echo '</td>';
-            // echo '</tr>';
         }
     }
 }

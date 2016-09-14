@@ -1,33 +1,6 @@
 <?php
 namespace Fr;
 
-/**
-.---------------------------------------------------------------------------.
-| The Francium Project                                                      |
-| ------------------------------------------------------------------------- |
-| This software 'Francium Star' is a part of the Francium (Fr) project.     |
-| http://subinsb.com/the-francium-project                                   |
-| ------------------------------------------------------------------------- |
-|     Author: Subin Siby                                                    |
-| Copyright (c) 2014 - 2015, Subin Siby. All Rights Reserved.               |
-| ------------------------------------------------------------------------- |
-|   License: Distributed under the Apache License, Version 2.0              |
-|            http://www.apache.org/licenses/LICENSE-2.0                     |
-| This program is distributed in the hope that it will be useful - WITHOUT  |
-| ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or     |
-| FITNESS FOR A PARTICULAR PURPOSE.                                         |
-'---------------------------------------------------------------------------'
-*/
-
-/**
-.--------------------------------------------------------------------------.
-|  Software: Francium Star                                                 |
-|  Version: 0.1  (2015-06-16)                                              |
-|  Contact: http://github.com/subins2000/Francium-Star                     |
-|  Documentation: https://subinsb.com/Francium-Star                        |
-|  Support: https://github.com/subins2000/Francium-Star/issues             |
-'--------------------------------------------------------------------------'
-*/
 
 ini_set("display_errors", "on");
 
