@@ -9,6 +9,8 @@ session_start();
     <meta name="keywords" content="put, keywords, here" />
     <title>CiTE</title>
     
+    <link href="../public/css/rating.css" rel="stylesheet">
+    <link href="../public/css/styles.css" rel="stylesheet">
     <link href="../public/css/bootstrap.min.css" rel="stylesheet">
     <link href="../public/css/font-awesome.min.css" rel="stylesheet">
     <link href="../public/css/metisMenu.min.css" rel="stylesheet">

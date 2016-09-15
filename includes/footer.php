@@ -2,6 +2,15 @@
 </div><!-- wrapper -->
 </div>
 <div id="footer"></div>
+
+	<script type="text/javascript">
+	   $(':radio').change(
+		 function(){
+		 	$('.choice').text( this.value + ' stars' );
+		 } 
+		)
+	</script>
+
     <!-- jQuery -->
     <script src="../public/js/jquery.min.js"></script>
 

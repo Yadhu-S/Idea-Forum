@@ -51,11 +51,19 @@ else
                             <h5><?php 
                                 echo '<a id="hey" href="topic.php?id=' . $row['topic_id'] . '" style="text-decoration: none;"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp' .$row['topic_subject'].'</a>'; 
                                 ?>
-                                <div class="rating-stars pull-right">
-                                    <span >
-                                        
-                                    </span>
-                                </div>                                    
+                                <div class="starter pull-right">                     
+                                        <form name = "starrate">
+                                               <span class="star-rating">
+                                                     <input type="radio" name="rating" value="1"><i></i>
+                                                     <input type="radio" name="rating" value="2"><i></i>
+                                                     <input type="radio" name="rating" value="3"><i></i>
+                                                     <input type="radio" name="rating" value="4"><i></i>
+                                                     <input type="radio" name="rating" value="5"><i></i>
+                                               </span>
+                                                <strong class="choice">Choose a rating</strong>   
+                                        </form>
+                                </div>
+                                                                     
                             </h5>
                     <?php
                         }
@@ -64,6 +72,16 @@ else
                     }
                 ?>
                 </li>
+                <script type="text/javascript">
+                                         document.starrate.rating.value="2";
+                                    </script>
+                                    <script type="text/javascript">
+                                       $(':radio').change(
+                                         function(){
+                                            $('.choice').text( this.value + ' stars' );
+                                         } 
+                                        )
+                                    </script>  
                 
             </ol>
         </div>

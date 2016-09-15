@@ -125,8 +125,8 @@ body {
 #hey{
     color: #757575;
 }
-#starter{
-    transform: scale(.9, .9);
+.starter{
+    transform: scale(.5, .5);
 }
     /*list-style-type: none;
     padding-left: 18px;*/
