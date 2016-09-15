@@ -24,9 +24,7 @@ function log(m){
         percent = (xCoor/width) * 100;
         if(percent < 101){
           rating_decimal = ("" + (percent / 100) * 5 + "").substr(0, 3);
-          if(rating_decimal.substr(-2) == ".9"){
-            rating_decimal = Math.round(rating_decimal, 2);
-          }
+          rating_decimal = Math.round(rating_decimal * 2, 2) / 2;
           elem.setAttribute("data-title", "Set a rating of " + rating_decimal);
           
           elem.querySelector(".Fr-star-value").style.width = percent + "%";
