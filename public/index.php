@@ -57,6 +57,8 @@ else
                                                 echo $star->getRating("userChoose size-3");
                                         ?>
                                     </span>
+                                    <script src="js/Fr.star.js"></script>
+                                    <script src="js/rate.js"></script>
                                 </div>                                    
                             </h5>
                     <?php

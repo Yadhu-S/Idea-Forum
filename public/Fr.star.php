@@ -26,12 +26,12 @@ class Star {
      * Database Configuration
      */
     "db" => array(
-      "host" => "localhost",
+      "host" => "",
       "port" => 3306,
-      "username" => "cite_cms",
-      "password" => "spassword",
-      "name" => "cite_form",
-      "table" => "fr_star"
+      "username" => "",
+      "password" => "",
+      "name" => "",
+      "table" => "Fr_star"
     )
   );
   

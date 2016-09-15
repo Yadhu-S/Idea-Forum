@@ -23,7 +23,7 @@ function log(m){
         
         percent = (xCoor/width) * 100;
         if(percent < 101){
-          rating_decimal = ("" + (percent / 100) * 5 + "").substr(0, 3);
+          rating_decimal = ("" + (percent / 10) * 5 + "").substr(0, 3);
           if(rating_decimal.substr(-2) == ".9"){
             rating_decimal = Math.round(rating_decimal, 2);
           }
