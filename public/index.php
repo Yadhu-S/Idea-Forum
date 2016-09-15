@@ -49,12 +49,17 @@ else
                                 <div class="pull-right">
                                     <span >
                                         <?php
+                                            
                                             if(!isset($_SESSION['user_id']))
                                             {
                                                 echo $star->getRating("size-3");
                                             }
                                             else
                                                 echo $star->getRating("userChoose size-3");
+                                            if(isset($_POST['id']) && isset($_POST['rating']) && $_POST['id'] == "index_page"){
+                                             $star->id = $_POST['id'];
+                                             $star->addRating($_SESSION['user_id'], $_POST['rating'],$row['topic_id']);
+                                            }
                                         ?>
                                     </span>
                                     <script src="js/Fr.star.js"></script>
@@ -63,6 +68,7 @@ else
                             </h5>
                     <?php
                         }
+
                         
                         } 
                     }
@@ -73,6 +79,7 @@ else
         </div>
         <?php
         }
+        
     }
 }
  

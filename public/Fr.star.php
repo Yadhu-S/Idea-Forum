@@ -82,14 +82,15 @@ class Star {
   /**
    * Set a rate
    */
-  public function addRating($user_id, $rating){
+  public function addRating($user_id, $rating,$topic){
+    //echo $topic;
     if($rating <= 5.0){
-      $sql = $this->dbh->prepare("SELECT COUNT(1) FROM `{$this->config['db']['table']}` WHERE `user_id` = ? AND `rate_id` = ?");
-      $sql->execute(array($user_id, $this->id));
+      $sql = $this->dbh->prepare("SELECT COUNT(1) FROM `{$this->config['db']['table']}` WHERE `user_id` = ? AND `rate_id` = ? AND `id_topic`= ?");
+      $sql->execute(array($user_id, $this->id,$topic));
         
       if($sql->fetchColumn() == "0"){
-        $sql = $this->dbh->prepare("INSERT INTO `{$this->config['db']['table']}` (`rate_id`, `user_id`, `rate`) VALUES(?, ?, ?)");
-        return $sql->execute(array($this->id, $user_id, $rating));
+        $sql = $this->dbh->prepare("INSERT INTO `{$this->config['db']['table']}` (`rate_id`, `user_id`, `rate` ,`id_topic`) VALUES(?, ?, ?, ?)");
+        return $sql->execute(array($this->id, $user_id, $rating,$topic));
       }else{
         $sql = $this->dbh->prepare("UPDATE `{$this->config['db']['table']}` SET `rate` = ? WHERE `user_id` = ? AND `rate_id` = ?");
         return $sql->execute(array($rating, $user_id, $this->id));
