@@ -5,7 +5,6 @@
   
 	<script src="../public/js/jquery.min.js"></script>
     <script src="../public/js/Fr.star.js"></script>
-    <script src="../public/js/rate.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="../public/js/bootstrap.min.js"></script>
 

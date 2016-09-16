@@ -26,7 +26,6 @@ function log(m){
           rating_decimal = ("" + (percent / 100) * 5 + "").substr(0, 3);
           rating_decimal = Math.round(rating_decimal * 2, 2) / 2;
           elem.setAttribute("data-title", "Set a rating of " + rating_decimal);
-          
           elem.querySelector(".Fr-star-value").style.width = percent + "%";
         }
       }
@@ -43,11 +42,7 @@ function log(m){
     elem.onclick = function(){
       width = elem.querySelector(".Fr-star-value").style.width.replace("%", "");
       rating = ("" + (width/100) * 5 + "").substr(0, 3);
-      
-      if(rating.substr(-2) == ".9"){
-        rating = Math.round(rating, 2);
-      }
-      
+      rating = Math.round(rating * 2,2)/2;
       elem.setAttribute("data-rating", rating);
       elem.setAttribute("data-disabled", 1);
       rated_callback(rating);
@@ -62,3 +57,13 @@ function log(m){
     });
   };
 })(jQuery);
+
+
+//function to post values to index
+$(function(){
+  $(".Fr-star.userChoose").Fr_star(function(rating){
+    $.post("index.php", {'id' : 'index_page', 'rating': rating ,'top': id_topic}, function(){
+    });
+  });
+});
+
