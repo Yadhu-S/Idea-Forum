@@ -21,17 +21,46 @@ if(isset($_SESSION['user_level'])&&$_SESSION['user_level']==1){
       			die('failed');
       		}
 		}
-		else{
-			echo'Category name cannot be blank';
-		}
+		
 
 	}
 	?>
-	<form action="create_cat.php" method="post">
-        Category name: <input type='text' name='cat_name' /></br>
-        Description: <textarea name='cat_description' /></textarea></br>
-        <input type ="submit" name="newcat" value="Submit"/>
-     </form>
+     <div >
+        <div class= "category_create">
+         <div id="p">
+            
+                <div class="panel-heading">
+                <h3 class="panel-title">Create category</h3> </br>
+                </div>
+                <div>
+                    <form role="form" action="create_cat.php" method="post">
+                       
+                            <div class="form-group <?=isset($alert['empty'])?'has-error':''?>">
+                                <input class="cat_form" placeholder="Category name" name="cat_name" type="text" autofocus>
+                                <?php
+                                if (isset($alert['empty'])) {
+                                ?>
+                                <span class="help-block"><?=$alert['empty']?>.</span>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                          
+                            <div class="form-group">
+                            	
+                                <textarea placeholder="Description"  class="cat_desc" name="cat_description"></textarea>
+                            </div>
+                            <!-- Change this to a button or input when using this as a form -->
+                            <button type="submit" class="btn btn-md btn-success" name="newcat" value="Submit">Create</button>
+                            
+                        
+                    </form>
+                </div>
+          
+            </div>
+        </div>
+    </div>
+
      <?php
 
 }

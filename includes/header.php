@@ -25,12 +25,7 @@ session_start();
 <div id="wrapper">
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; margin-left:10%; margin-right:10%; border-bottom: 1px solid #BDBDBD;">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
+        
         <a class="navbar-brand" href="index.php"> <span class=head><i class="fa fa-home fa-lg" aria-hidden="true"></i> Post Your Ideas</span></a>
     </div>
     <ul class="nav navbar-top-links navbar-right">

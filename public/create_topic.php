@@ -3,7 +3,6 @@
 require('../includes/connect.php');
 require('../includes/header.php');
  
-echo '<h2>Create a topic</h2>';
 if($_SESSION['signed_in'] == false)
 {
     //the user is not signed in
@@ -44,23 +43,29 @@ else
                 }
             }
             else
-            {
-         
-                echo '<form method="post" action="">
-                    Subject: <input type="text" name="topic_subject" /></br>
-                    Category:'; 
-                 
-                echo '<select name="topic_cat">';
-                    while($row = mysqli_fetch_assoc($result))
-                    {
-                        echo '<option value="' . $row['cat_id'] . '">' . $row['cat_name'] . '</option>';
-                    }
-                echo '</select> </br>'; 
-                     
-                echo 'Message: <textarea name="post_content" /></textarea>
+            {?>
+        <div class="category_create">
+            <div class="form-group">
+           </br><h3 class="panel-title">Create a new topic</h3></br>
+                <form method="post" action="">
+                    <input class="cat_form" placeholder="Subject" name="topic_subject" type="text" autofocus/>
+                <label for="sel1">Select category (select one):</label> </br>
+                    <select name="topic_cat" class="form-control" id="sel1">
+                        <?php
+                            while($row = mysqli_fetch_assoc($result))
+                            {
+                                ?><option value="<?php echo $row['cat_id']?>"> <?php echo $row['cat_name'] ?></option>
+                            <?php
+                            }
+                        ?>
+                    </select> </br>
+                    <textarea placeholder="Description of your question/idea"  class="cat_desc" name="post_content" /></textarea>
                     </br>
-                    <input type="submit" value="Create topic" />
-                 </form>';
+                    <input class="btn btn-md btn-success" type="submit" value="Create topic" />
+                 </form>
+            </div>
+        </div>
+                <?php
             }
         }
     }
