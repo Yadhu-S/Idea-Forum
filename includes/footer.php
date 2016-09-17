@@ -11,5 +11,6 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="../public/js/metisMenu.min.js"></script>
     <script src="../public/js/sb-admin-2.js"></script>
+    <script src="js/betterrate.js"></script>
 </body>
 </html>

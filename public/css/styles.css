@@ -81,6 +81,12 @@ body {
 .sub-items .sub-item span {
     color: #828282;
 }
+.sub-items .sub-item span .userChoose {
+    cursor: pointer;
+}
+.sub-items .sub-item .rating-stars {
+    margin-right: 9px;
+}
 .had{
     color: #212121;
 }

@@ -33,7 +33,7 @@
      id="defs10" />
   <sodipodi:namedview
      pagecolor="#ffffff"
-     bordercolor="#666666"
+     bordercolor="#E0E0E0"
      borderopacity="1"
      objecttolerance="10"
      gridtolerance="10"
@@ -60,7 +60,7 @@
      inkscape:connector-curvature="0"
      transform="matrix(1.3333333,0,0,1.3333333,0,-2.6666667)" />
   <path
-     style="fill:#eeeeee;fill-opacity:1;fill-rule:nonzero;stroke:none"
+     style="fill:#E0E0E0;fill-opacity:1;fill-rule:nonzero;stroke:none"
      d="M 0 0 L 0 40 L 45 40 L 45 0 L 0 0 z M 22.71875 1.28125 L 28.0625 15.4375 L 44.125 15.4375 L 31.625 24.5625 L 36.09375 38.71875 L 22.71875 30.40625 L 9.34375 38.71875 L 13.78125 24.5625 L 1.3125 15.4375 L 17.34375 15.4375 L 22.71875 1.28125 z "
      transform="matrix(1.3333333,0,0,1.3333333,0,-2.6666667)"
      id="rect3900" />

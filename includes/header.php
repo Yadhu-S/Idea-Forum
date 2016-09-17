@@ -10,6 +10,10 @@ session_start();
     <title>CiTE</title>
     
     <script src="../public/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var i=0;
+        var topic_id_php= new Array();
+    </script>
     <link rel="stylesheet" href="../public/css/Fr.star.css" />
     <link href="../public/css/bootstrap.min.css" rel="stylesheet">
     <link href="../public/css/font-awesome.min.css" rel="stylesheet">

@@ -59,7 +59,7 @@ else{
     ?>
    
     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+        <div class="col-sm-9 col-md-4 col-md-offset-4 col-sm-offset-2">
          <div id="p">
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">

@@ -45,7 +45,7 @@ function log(m){
       rating = Math.round(rating * 2,2)/2;
       elem.setAttribute("data-rating", rating);
       elem.setAttribute("data-disabled", 1);
-      rated_callback(rating);
+      rated_callback(rating, elem);
     };
   };
 })(window);
@@ -59,11 +59,5 @@ function log(m){
 })(jQuery);
 
 
-//function to post values to index
-$(function(){
-  $(".Fr-star.userChoose").Fr_star(function(rating){
-    $.post("index.php", {'id' : 'index_page', 'rating': rating ,'top': id_topic}, function(){
-    });
-  });
-});
+
 

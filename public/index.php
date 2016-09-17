@@ -12,6 +12,12 @@ $sql = "SELECT
             categories";
  
 $result = mysqli_query($connection,$sql);
+
+$numrow = mysqli_query($connection,"SELECT * FROM `topics`");
+$topic_number=mysqli_num_rows($numrow);
+?>
+    <script>var num_topic=<?php echo json_encode($topic_number)?></script>
+<?php
  
 if(!$result)
 {
@@ -46,16 +52,17 @@ else
                             <h5><?php 
                                 echo '<a id="hey" href="topic.php?id=' . $row['topic_id'] . '" style="text-decoration: none;"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp' .$row['topic_subject'].'</a>'; 
                                 ?>
-                                <div class="pull-right">
-                                    <span >
+                                <div class="pull-right rating-stars">
+                                    <span data-topic-id="<?=$row['topic_id']?>">
                                         <?php
+
                                             
                                             if(!isset($_SESSION['user_id']))
                                             {
-                                                echo $star->getRating("size-3");
+                                                echo $star->getRating("size-3", "html", $row['topic_id']);
                                             }
                                             else{
-                                                echo $star->getRating("userChoose size-3");
+                                                echo $star->getRating("userChoose size-3", "html", $row['topic_id']);
                                             }
                                             if(isset($_POST['id']) && isset($_POST['rating']) && $_POST['id'] == "index_page"){
                                              $star->id = $_POST['id'];
@@ -63,8 +70,6 @@ else
                                             }
                                         ?>
                                     </span>
-                                    <script>var id_topic=<?php echo json_encode($row['topic_id'])?></script>
-                                    
                                 </div>                                    
                             </h5>
                     <?php
