@@ -132,8 +132,18 @@ body {
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+.ce{
+    margin:0 auto;
+    width: 100px;
+    margin-left: 10%;
+    position: absolute;
+       top: 30%;
+       left: 0;
+       bottom: 0;
+       right: 0;
+       margin: auto;
 }
-.usrep{
+.impr{
     
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
@@ -151,10 +161,10 @@ body {
     border-radius: 2px;
     text-decoration: none;
     color: white;
-    background: #D50000;
+    background: #E53935;
     margin-left: 10%;
     width: 120px;
-    padding-left: 20px;
+    padding: 6px;
 }
 
 .top_cont{

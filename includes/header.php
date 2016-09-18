@@ -10,10 +10,6 @@ session_start();
     <title>CiTE</title>
     
     <script src="../public/js/jquery.min.js"></script>
-    <script type="text/javascript">
-        var i=0;
-        var topic_id_php= new Array();
-    </script>
     <link rel="stylesheet" href="../public/css/Fr.star.css" />
     <link href="../public/css/bootstrap.min.css" rel="stylesheet">
     <link href="../public/css/font-awesome.min.css" rel="stylesheet">
@@ -34,10 +30,10 @@ session_start();
                
         ?>
         <li>
-            <a href="login.php">Log in</a>
+            <a href="login.php"> <i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
         </li>
         <li>
-            <a href="signup.php">Register</a>
+            <a href="signup.php"> <i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
         </li>
         <?php
         } else{

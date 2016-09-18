@@ -2,11 +2,18 @@
 //create_cat.php
 require('../includes/connect.php');
 require('../includes/header.php');
+$result=0;
  
 if($_SERVER['REQUEST_METHOD'] != 'POST')
 {
     
-    echo 'Direct access not allowed.';
+    echo '<div class="ce">
+
+                <div class="alert alert-danger vertical-center-row" >
+                <i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i></br>
+                <strong >Forbidden</strong>
+                </div>
+            </div>';
 }
 else
 {
@@ -20,7 +27,8 @@ else
         $pgid=mysqli_real_escape_string($connection,$_GET['id']);
         $idus=mysqli_real_escape_string($connection,$_SESSION['user_id']);
         $cont=mysqli_real_escape_string($connection,$_POST['reply-content']);
-        //a real user posted a real reply
+
+        if($cont!=""){
         $sql = "INSERT INTO 
                     posts(post_content,
                           post_date,
@@ -29,10 +37,15 @@ else
                 VALUES ('{$cont}',NOW(),'{$pgid}','{$idus}')";
                          
         $result = mysqli_query($connection,$sql);
+        }
+        else{
+            echo 'Reply cannot be empty.';
+        }
                          
         if(!$result)
         {
-            echo 'Your reply has not been saved, please try again later.';
+            echo '</br>Your reply has not been saved.';
+           
         }
         else
         {
