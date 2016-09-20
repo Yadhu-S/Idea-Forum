@@ -84,16 +84,24 @@ if(isset($_GET['id'])){
 				
 				if(!isset($_SESSION['signed_in']))
 				{
-					echo '<div class="top_cont">You must be <a href="login.php">signed in</a> to reply. You can also <a href="signup.php">sign up</a> for an account.</div>';
+					echo '<div class="top_cont alert alert-warning"><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> You must <a href="login.php">Log in</a> to reply. You can also <a href="signup.php">Register</a> for an account.</div>';
 				}
 				else
 				{
-					//show reply box
-					echo '<div class="top_cont"></br><label>Post your reply: </label>
-						<form method="post" action="reply.php?id=' . $row['topic_id'] . '">
-							<textarea placeholder="Reply" class="cat_desc" name="reply-content"></textarea><br />
-							<input class="btn btn-md btn-success" type="submit" value="Submit reply" />
-						</form></div>';
+					?>
+					<div ng-app="">
+						<div class="top_cont">
+							</br><label>Post your reply: </label>
+							<form name="reForum" method="post" action="reply.php?id=<?php echo $row['topic_id'] ?>">
+								<textarea placeholder="Reply" class="cat_desc" name="reply_content" ng-model="myInput" required></textarea><br />
+								<h1>{{reForum.reply_content.$valid}}</h1>
+								<script>window.alert(reForum.reply_content.$valid)</script>
+								<input class="btn btn-md btn-success" type="submit" value="Submit reply" />
+							</form>
+							
+						</div>;
+					</div>
+					<?php			
 				}
 				
 				//finish the table

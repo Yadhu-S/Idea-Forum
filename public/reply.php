@@ -26,7 +26,7 @@ else
     {
         $pgid=mysqli_real_escape_string($connection,$_GET['id']);
         $idus=mysqli_real_escape_string($connection,$_SESSION['user_id']);
-        $cont=mysqli_real_escape_string($connection,$_POST['reply-content']);
+        $cont=mysqli_real_escape_string($connection,$_POST['reply_content']);
 
         if($cont!=""){
         $sql = "INSERT INTO 
