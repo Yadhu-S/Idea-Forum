@@ -58,6 +58,7 @@ else{
     }
     ?>
    
+   <div ng-app="validationApp" ng-controller="mainController">
     <div class="row">
         <div class="col-sm-9 col-md-4 col-md-offset-4 col-sm-offset-2">
          <div id="p">
@@ -66,10 +67,12 @@ else{
                     <h3 class="panel-title">Log In</h3>
                 </div>
                 <div class="panel-body">
-                    <form role="form" action="login.php" method="post">
+                    <form role="form" name="userForm" action="login.php" method="post" ng-submit="submitForm(userForm.$valid)" novalidate>
                         <fieldset>
-                            <div class="form-group <?=isset($alert['username'])?'has-error':''?>">
-                                <input class="form-control" placeholder="Username" name="user_name" type="text" autofocus>
+                            <div  ng-class="{ 'has-error' : userForm.user_name.$invalid && !userForm.user_name.$pristine }" class="form-group <?=isset($alert['username'])?'has-error':''?>" >
+                                <input class="form-control" placeholder="Username" name="user_name" type="text" autofocus ng-model="user.name" required ng-minlength="5" ng-maxlength="30">
+                                <p ng-show="userForm.user_name.$error.minlength" class="help-block">Invalid username.</p>
+                                <p ng-show="userForm.user_name.$error.maxlength" class="help-block">Invalid username.</p>
                                 <?php
                                 if (isset($alert['username'])) {
                                 ?>
@@ -95,7 +98,7 @@ else{
                             </div>
                             <div class="form-group <?=isset($alert['user'])?'has-error':''?>">
                             <!-- Change this to a button or input when using this as a form -->
-                                <button type="submit" class="btn btn-lg btn-success btn-block" name="login">Log in</button>
+                                <button type="submit" class="btn btn-lg btn-primary btn-block" name="login">Log in</button>
                                 <?php
                                 if (isset($alert['user'])) {
                                 ?>
@@ -110,6 +113,7 @@ else{
             </div>
             </div>
         </div>
+    </div>
     </div>
     
     <?php

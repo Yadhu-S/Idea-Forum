@@ -51,7 +51,7 @@ if(isset($_SESSION['user_level'])&&$_SESSION['user_level']==1){
                                 <textarea placeholder="Description"  class="cat_desc" name="cat_description"></textarea>
                             </div>
                             <!-- Change this to a button or input when using this as a form -->
-                            <button type="submit" class="btn btn-md btn-success" name="newcat" value="Submit">Create</button>
+                            <button type="submit" class="btn btn-md btn-primary" name="newcat" value="Submit">Create</button>
                             
                         
                     </form>

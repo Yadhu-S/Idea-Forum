@@ -11,6 +11,7 @@ session_start();
     
     <script src="../public/js/jquery.min.js"></script>
     <script src="../public/js/angular.min.js"></script>
+    <script src="../public/js/angapp.js"></script>
     <link rel="stylesheet" href="../public/css/Fr.star.css" />
     <link href="../public/css/bootstrap.min.css" rel="stylesheet">
     <link href="../public/css/font-awesome.min.css" rel="stylesheet">

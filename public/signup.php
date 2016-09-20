@@ -62,65 +62,69 @@ else{
 
     }   
     ?>
-       
-     <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <div id="p">
-            <div class="login-panel panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Register</h3>
+    <div ng-app="validationApp" ng-controller="mainController">   
+         <div class="row">
+            <div class="col-sm-9 col-md-4 col-md-offset-4 col-sm-offset-2">
+              <div id="p">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Register</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form name="userForm" role="form" action="signup.php" method="post">
+                            <fieldset>
+                                <div ng-class="{ 'has-error' : userForm.user_name.$invalid && !userForm.user_name.$pristine }" class="form-group <?=isset($alert['user'])?'has-error':''?>">
+                                    <input class="form-control" placeholder="Username" name="user_name" type="text" autofocus ng-model="user.name" required ng-minlength="5" ng-maxlength="30">
+                                    <p ng-show="userForm.user_name.$error.minlength" class="help-block">Username is too short.</p>
+                                    <p ng-show="userForm.user_name.$error.maxlength" class="help-block">Username is too long.</p>
+                                    <?php
+                                    if (isset($alert['user'])) {
+                                    ?>
+                                    <span class="help-block"><?=$alert['user']?>.</span>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div ng-class="{ 'has-error' : userForm.user_pass.$invalid && !userForm.user_pass.$pristine }" class="form-group <?=isset($alert['pass_length'])?'has-error':''?>">
+                                    <input class="form-control" placeholder="Password" name="user_pass" type="password" value="" ng-model="user.pass" required ng-minlength="6">
+                                    <p ng-show="userForm.user_pass.$error.minlength" class="help-block">Password too short.</p>
+                                    <?php
+                                    if (isset($alert['pass_length'])) {
+                                    ?>
+                                    <span class="help-block"><?=$alert['pass_length']?>.</span>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div class="form-group <?=isset($alert['pass'])?'has-error':''?>">
+                                    <input class="form-control" placeholder="Repet Password" name="pass_check" type="password" value="">
+                                    <?php
+                                    if (isset($alert['pass'])) {
+                                    ?>
+                                    <span class="help-block"><?=$alert['pass']?>.</span>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div class="form-group <?=isset($alert['mail_valid'])?'has-error':''?>">
+                                    <input class="form-control" placeholder="Admission No." name="adm_no" type="number" autofocus>
+                                    <?php
+                                    if (isset($alert['mail_valid'])) {
+                                    ?>
+                                    <span class="help-block"><?=$alert['mail_valid']?>.</span>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+                                <div class="form-group" >
+                                <!-- Change this to a button or input when using this as a form -->
+                                    <button type="submit" class="btn btn-lg btn-primary btn-block" name="submit">Register</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <form role="form" action="signup.php" method="post">
-                        <fieldset>
-                            <div class="form-group <?=isset($alert['user'])?'has-error':''?>">
-                                <input class="form-control" placeholder="Username" name="user_name" type="text" autofocus>
-                                <?php
-                                if (isset($alert['user'])) {
-                                ?>
-                                <span class="help-block"><?=$alert['user']?>.</span>
-                                <?php
-                                }
-                                ?>
-                            </div>
-                            <div class="form-group <?=isset($alert['pass_length'])?'has-error':''?>">
-                                <input class="form-control" placeholder="Password" name="user_pass" type="password" value="">
-                                <?php
-                                if (isset($alert['pass_length'])) {
-                                ?>
-                                <span class="help-block"><?=$alert['pass_length']?>.</span>
-                                <?php
-                                }
-                                ?>
-                            </div>
-                            <div class="form-group <?=isset($alert['pass'])?'has-error':''?>">
-                                <input class="form-control" placeholder="Repet Password" name="pass_check" type="password" value="">
-                                <?php
-                                if (isset($alert['pass'])) {
-                                ?>
-                                <span class="help-block"><?=$alert['pass']?>.</span>
-                                <?php
-                                }
-                                ?>
-                            </div>
-                            <div class="form-group <?=isset($alert['mail_valid'])?'has-error':''?>">
-                                <input class="form-control" placeholder="Admission No." name="adm_no" type="number" autofocus>
-                                <?php
-                                if (isset($alert['mail_valid'])) {
-                                ?>
-                                <span class="help-block"><?=$alert['mail_valid']?>.</span>
-                                <?php
-                                }
-                                ?>
-                            </div>
-                            <div class="form-group" >
-                            <!-- Change this to a button or input when using this as a form -->
-                                <button type="submit" class="btn btn-lg btn-success btn-block" name="submit">Register</button>
-                            </div>
-                        </fieldset>
-                    </form>
                 </div>
-            </div>
             </div>
         </div>
     </div>

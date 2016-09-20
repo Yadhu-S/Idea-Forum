@@ -61,7 +61,7 @@ else
                     </select> </br>
                     <textarea placeholder="Description of your question/idea"  class="cat_desc" name="post_content" /></textarea>
                     </br>
-                    <input class="btn btn-md btn-success" type="submit" value="Create topic" />
+                    <input class="btn btn-md btn-primary" type="submit" value="Create topic" />
                  </form>
             </div>
         </div>

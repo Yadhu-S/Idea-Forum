@@ -89,18 +89,16 @@ if(isset($_GET['id'])){
 				else
 				{
 					?>
-					<div ng-app="">
+					
 						<div class="top_cont">
-							</br><label>Post your reply: </label>
+							</br><label>Post your reply: <i class="fa fa-reply" aria-hidden="true"></i>
+ </label>
 							<form name="reForum" method="post" action="reply.php?id=<?php echo $row['topic_id'] ?>">
-								<textarea placeholder="Reply" class="cat_desc" name="reply_content" ng-model="myInput" required></textarea><br />
-								<h1>{{reForum.reply_content.$valid}}</h1>
-								<script>window.alert(reForum.reply_content.$valid)</script>
-								<input class="btn btn-md btn-success" type="submit" value="Submit reply" />
+								<textarea placeholder="Reply" class="cat_desc" name="reply_content" required></textarea><br />
+								<input class="btn btn-md btn-primary" type="submit" value="Submit reply" />
 							</form>
 							
 						</div>;
-					</div>
 					<?php			
 				}
 				
