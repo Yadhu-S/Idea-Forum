@@ -84,7 +84,7 @@ if(isset($_GET['id'])){
 				
 				if(!isset($_SESSION['signed_in']))
 				{
-					echo '<div class="top_cont alert alert-warning"><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> You must <a href="login.php">Log in</a> to reply. You can also <a href="signup.php">Register</a> for an account.</div>';
+					echo '<div class="top_cont alert alert-info"><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> You must be logged in to reply.';
 				}
 				else
 				{
