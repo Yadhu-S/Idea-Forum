@@ -27,20 +27,19 @@ if(isset($_SESSION['signed_in'])){
             {
                 $sub=mysqli_real_escape_string($connection,$_POST['topic_subject']);
                 $pr=mysqli_real_escape_string($connection,$_POST['topic_cat']);
+                $cont= mysqli_real_escape_string($connection,$_POST['post_content']);
                 if($pr=="-- Select --"){
-                    echo '<div class="top_cont alert alert-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
-                    You should select a valid category</div>';
+                    $alert["cat"]='You should select a valid category';
                 }
                 $usr=$_SESSION['user_id'];
                 if($sub==""){
-                    echo '<div class="top_cont alert alert-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
-                    Topic name cannot be blank </dvi>';
+                    $alert['Subject']='Subject name cannot be blank';
                 }
-                else if($_POST['post_content']==""){
-                    echo '<div class="top_cont alert alert-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
-                    Content cannot be blank </div>';
+                if(strlen($cont)<30){
+                    
+                    $alert['cont']='Content should contain atleast 30 charaters.';
                 }
-                else{
+                if(empty($alert)){
                     //the form has been posted, so save it
                     //insert the topic into the topics table first, then we'll save the post into the posts table
                     $sql = "INSERT INTO 
@@ -63,7 +62,7 @@ if(isset($_SESSION['signed_in'])){
                         //the first query worked, now start the second, posts query
                         //retrieve the id of the freshly created topic for usage in the posts query
                         $topicid = mysqli_insert_id($connection);
-                        $cont= mysqli_real_escape_string($connection,$_POST['post_content']);
+                        
                         $user_id =$_SESSION['user_id'];
                         $sql = "INSERT INTO posts(post_content,post_date,post_topic,post_by)
                                 VALUES      ('{$cont}',NOW(),'{$topicid}','{$user_id}')";
@@ -122,19 +121,46 @@ if(isset($_SESSION['signed_in'])){
             <div class="form-group">
            </br><h3 class="panel-title">Create a new post</h3></br>
                 <form method="post" action="">
-                    <input class="cat_form" placeholder="Subject" name="topic_subject" type="text" autofocus/>
-                    <label for="sel1">Select category (select one):</label> </br>
-                    <select name="topic_cat" class="form-control" id="sel1">
-                        <option>-- Select --</option>
+                    <div class="form-group <?=isset($alert['Subject'])?'has-error':''?>">
+                        <input class="cat_form form-control" placeholder="Subject" name="topic_subject" type="text" autofocus/>
                         <?php
-                            while($row = mysqli_fetch_assoc($result))
-                            {
-                                ?><option value="<?php echo $row['cat_id']?>"> <?php echo $row['cat_name'] ?></option>
-                            <?php
-                            }
+                        if (isset($alert['Subject'])) {
                         ?>
-                    </select> </br>
-                    <textarea placeholder="Description of your question/idea"  class="cat_desc" name="post_content" /></textarea>
+                        <span class="help-block"><?=$alert['Subject']?>.</span>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <label for="sel1">Select category (select one):</label> </br>
+                    <div class="form-group <?=isset($alert['cat'])?'has-error':''?>">
+                        <select name="topic_cat" class="form-control" id="sel1">
+                            <option>-- Select --</option>
+                            <?php
+                                while($row = mysqli_fetch_assoc($result))
+                                {
+                                    ?><option value="<?php echo $row['cat_id']?>"> <?php echo $row['cat_name'] ?></option>
+                                <?php
+                                }
+                            ?>
+                        </select>
+                        <?php
+                        if (isset($alert['cat'])) {
+                        ?>
+                        <span class="help-block"><?=$alert['cat']?>.</span>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    <div class="form-group <?=isset($alert['cont'])?'has-error':''?>">
+                    <textarea placeholder="Description of your question/idea" style="height: 150px;" class="form-control cat_desc " name="post_content" /></textarea>
+                    <?php
+                        if (isset($alert['cont'])) {
+                        ?>
+                        <span class="help-block"><?=$alert['cont']?>.</span>
+                        <?php
+                        }
+                    ?>
+                    </div>
                     </br>
                     <input class="btn btn-md btn-primary" type="submit" value="Create topic" name="submit" />
                  </form>
