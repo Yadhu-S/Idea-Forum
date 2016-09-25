@@ -2,7 +2,7 @@
 //create_cat.php
 require('../includes/connect.php');
 require('../includes/header.php');
- 
+$alert=array(); 
 
 if(isset($_SESSION['signed_in'])){
      $alert=array();
@@ -13,67 +13,7 @@ if(isset($_SESSION['signed_in'])){
     }
     else
     {
-        //the user is signed in
-        if($_SERVER['REQUEST_METHOD'] != 'POST')
-        {   
-            //the form hasn't been posted yet, display it
-            //retrieve the categories from the database for use in the dropdown
-            $sql = "SELECT
-                        cat_id,
-                        cat_name,
-                        cat_description
-                    FROM
-                        categories";
-             
-            $result = mysqli_query($connection,$sql);
-             
-            if(!$result)
-            {
-                //the query failed, uh-oh :-(
-                echo 'Error while selecting from database. Please try again later.';
-            }
-            else
-            {
-                if(mysqli_num_rows($result) == 0)
-                {
-                    if($_SESSION['user_level'] == 1)
-                    {
-                        echo 'You have not created categories yet.';
-                    }
-                    else
-                    {
-                        echo 'Before you can post a topic, you must wait for an admin to create some categories.';
-                    }
-                }
-                else
-                {?>
-            <div class="category_create">
-                <div class="form-group">
-               </br><h3 class="panel-title">Create a new post</h3></br>
-                    <form method="post" action="">
-                        <input class="cat_form" placeholder="Subject" name="topic_subject" type="text" autofocus/>
-                        <label for="sel1">Select category (select one):</label> </br>
-                        <select name="topic_cat" class="form-control" id="sel1">
-                            <option>-- Select --</option>
-                            <?php
-                                while($row = mysqli_fetch_assoc($result))
-                                {
-                                    ?><option value="<?php echo $row['cat_id']?>"> <?php echo $row['cat_name'] ?></option>
-                                <?php
-                                }
-                            ?>
-                        </select> </br>
-                        <textarea placeholder="Description of your question/idea"  class="cat_desc" name="post_content" /></textarea>
-                        </br>
-                        <input class="btn btn-md btn-primary" type="submit" value="Create topic" />
-                     </form>
-                </div>
-            </div>
-                    <?php
-                }
-            }
-        }
-        else
+        if(isset($_POST["submit"]))
         {
             
             $query  = "BEGIN WORK;";
@@ -92,7 +32,7 @@ if(isset($_SESSION['signed_in'])){
                     You should select a valid category</div>';
                 }
                 $usr=$_SESSION['user_id'];
-                else if($sub==""){
+                if($sub==""){
                     echo '<div class="top_cont alert alert-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> 
                     Topic name cannot be blank </dvi>';
                 }
@@ -148,15 +88,70 @@ if(isset($_SESSION['signed_in'])){
                 }
             }
         }
+        //retrieve the categories from the database for use in the dropdown
+        $sql = "SELECT
+                    cat_id,
+                    cat_name,
+                    cat_description
+                FROM
+                    categories";
+         
+        $result = mysqli_query($connection,$sql);
+         
+        if(!$result)
+        {
+            //the query failed, uh-oh :-(
+            echo 'Error while selecting from database. Please try again later.';
+        }
+        else
+        {
+            if(mysqli_num_rows($result) == 0)
+            {
+                if($_SESSION['user_level'] == 1)
+                {
+                    echo 'You have not created categories yet.';
+                }
+                else
+                {
+                    echo 'Before you can post a topic, you must wait for an admin to create some categories.';
+                }
+            }
+            else
+            {?>
+        <div class="category_create">
+            <div class="form-group">
+           </br><h3 class="panel-title">Create a new post</h3></br>
+                <form method="post" action="">
+                    <input class="cat_form" placeholder="Subject" name="topic_subject" type="text" autofocus/>
+                    <label for="sel1">Select category (select one):</label> </br>
+                    <select name="topic_cat" class="form-control" id="sel1">
+                        <option>-- Select --</option>
+                        <?php
+                            while($row = mysqli_fetch_assoc($result))
+                            {
+                                ?><option value="<?php echo $row['cat_id']?>"> <?php echo $row['cat_name'] ?></option>
+                            <?php
+                            }
+                        ?>
+                    </select> </br>
+                    <textarea placeholder="Description of your question/idea"  class="cat_desc" name="post_content" /></textarea>
+                    </br>
+                    <input class="btn btn-md btn-primary" type="submit" value="Create topic" name="submit" />
+                 </form>
+            </div>
+        </div>
+                <?php
+            }
+        }
     }
 }
 else{
     echo '
             <div class="ce">
 
-                <div class="alert alert-danger vertical-center-row" >
-                <i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i></br>
-                <strong >Forbidden.</strong>
+                <div class="alert alert-info vertical-center-row" > 
+                 <i class="fa fa-exclamation-circle fa-5x" aria-hidden="true"></i></br>
+                <strong >Please log in.</strong>
                 </div>
             </div>';
 }
