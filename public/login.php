@@ -6,7 +6,14 @@ $alert=array();
 // $title = 'Login';
 if(isset($_SESSION['signed_in'])&&$_SESSION['signed_in']==true)
 {
-    echo'logout to continue';
+    echo '
+            <div class="ce">
+
+                <div class="alert alert-danger vertical-center-row" > 
+                 <i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i></br>
+                <strong >Please log out.</strong>
+                </div>
+            </div>';
 }
 else{
     if(isset($_POST['login'])){
@@ -38,8 +45,8 @@ else{
                         $usr=$row['user_name'];
                         $us_lev=$row['user_level'];
                     }
-                    $hash=crypt($password,$existing_hash);
-                    if(mysqli_num_rows($result) == 0 || $hash!=$existing_hash) {
+                    $hash=password_verify ($password,$existing_hash);
+                    if(mysqli_num_rows($result) == 0 || $hash!=TRUE) {
                         $alert['user'] = 'Username/Password is incorrect';
                     }
                     else{

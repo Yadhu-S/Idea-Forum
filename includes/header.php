@@ -38,31 +38,12 @@ session_start();
             <a href="signup.php"> <i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
         </li>
         <?php
-        } else{
-        ?>
-        <?php
-                if (isset($_SESSION['user_level']) && $_SESSION['user_level']==1) {
-                ?>
-         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                Categories
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                
-                <li><a href="create_cat.php">Create</a></li>
-                
-                <li><a href="index.php">List</a></li>
-            </ul>
-        </li>
-         <?php
-        // echo '<a class="item" href="login.php">Log in</a> or <a class="item" href="signup.php">create an account</a>.';
-        }
+        } 
+        else{
         ?>
         
         <li>
-            <a href="create_topic.php" >
-                Create new post
+            <a href="create_topic.php" ><i class="fa fa-pencil-square fa-lg" aria-hidden="true"></i> Create a new post
             </a>
          </li>
           
@@ -78,40 +59,31 @@ session_start();
                                                                             }
                                                                         ?>
                 </span></li>
+                
+                <?php
+                    if (isset($_SESSION['user_level']) && $_SESSION['user_level']==1) {
+                ?>
+                    <li>
+                        <a href="create_cat.php" ><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Category</a>
+                    </li>
+                <?php
+                // echo '<a class="item" href="login.php">Log in</a> or <a class="item" href="signup.php">create an account</a>.';
+                }
+                ?>
+                <li><a class="fa fa-key" aria-hidden="true" href="changepass.php"> Change password</a></li>
                 <li ><a class="fa fa-sign-out" aria-hidden="true" href="signout.php"> Log out</a></li>
-                <li><a class="fa fa-key" aria-hidden="true href="#"> Change password</a></li>
             </ul>
         </li>
-       <?php
+        <?php
             }
-                ?>
+        ?>
     </ul>
     
 </nav>
     <!-- <h1>Post Your Ideas</h1> -->
     <div id="wrapper">
-    <div id="menu">
-        <!-- <a class="item" href="index.php">Home</a> -
-        <a class="item" href="create_topic.php">Create a topic</a> -->
-       
-        <?php
-        // if (isset($_SESSION['user_level']) && $_SESSION['user_level']==1) {
-        ?>
-             <!-- <a class="item" class="btn btn-lg btn-success btn-block" href="create_cat.php">Create a category</a> -->
-        <?php
-        // }
-        ?>
-
-        
-<div id="userbar">
-    <?php
-        // if(isset($_SESSION['signed_in'])&&$_SESSION['signed_in']==true){
-        //     // echo 'Hello-'. $_SESSION['user_name'].' <a class="item" href="signout.php">Log out</a>';
-        // }
-        // else{
-        //     // echo '<a class="item" href="login.php">Log in</a> or <a class="item" href="signup.php">create an account</a>.';
-        // }
-    ?>
-</div>
-</div>
+        <div id="menu">
+            <div id="userbar">
+            </div>
+        </div>
         <div id="content">

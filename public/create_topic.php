@@ -119,7 +119,7 @@ if(isset($_SESSION['signed_in'])){
             {?>
         <div class="category_create">
             <div class="form-group">
-           </br><h3 class="panel-title">Create a new post</h3></br>
+           </br><h3 class="panel-title"><strong>Create a new post</strong></h3></br>
                 <form method="post" action="">
                     <div class="form-group <?=isset($alert['Subject'])?'has-error':''?>">
                         <input class="cat_form form-control" placeholder="Subject" name="topic_subject" type="text" autofocus/>
@@ -162,7 +162,7 @@ if(isset($_SESSION['signed_in'])){
                     ?>
                     </div>
                     </br>
-                    <input class="btn btn-md btn-primary" type="submit" value="Create topic" name="submit" />
+                    <input class="btn btn-md btn-primary" type="submit" value="Create post" name="submit" />
                  </form>
             </div>
         </div>

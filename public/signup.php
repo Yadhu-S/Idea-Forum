@@ -6,7 +6,14 @@ require('../includes/function.php');
  
 if(isset($_SESSION['signed_in'])&&$_SESSION['signed_in']==true)
 {
-    echo'logout to continue';
+    echo '
+            <div class="ce">
+
+                <div class="alert alert-danger vertical-center-row" > 
+                 <i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i></br>
+                <strong >Please log out.</strong>
+                </div>
+            </div>';
 }
 else{
 
@@ -39,7 +46,7 @@ else{
             }
             else{
                 if(mysqli_num_rows($pastosql) != 0){
-                        echo 'Username is already in use';
+                        $alert['user']='Username is already in use';
                     }
                 
                 else{
@@ -54,7 +61,7 @@ else{
                         }
                         else
                         {
-                            echo'Registered <a href="login.php">Log in</a>';
+                           $alert['reg']='Registered <a href="login.php">Log in</a>';
                         }
                     }
         }
@@ -74,24 +81,29 @@ else{
                         <form name="userForm" role="form" action="signup.php" method="post">
                             <fieldset>
                                 <div ng-class="{ 'has-error' : userForm.user_name.$invalid && !userForm.user_name.$pristine }" class="form-group <?=isset($alert['user'])?'has-error':''?>">
-                                    <input class="form-control" placeholder="Username" name="user_name" type="text" autofocus ng-model="user.name" required ng-minlength="5" ng-maxlength="30">
-                                    <p ng-show="userForm.user_name.$error.minlength" class="help-block">Username is too short.</p>
-                                    <p ng-show="userForm.user_name.$error.maxlength" class="help-block">Username is too long.</p>
+                                    <input class="form-control" placeholder="Username" name="user_name" type="text" autofocus ng-model="user.name" required ng-minlength="6" ng-maxlength="30">
+                                    <p ng-show="userForm.user_name.$error.minlength" class="help-block"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    Username is too short.</p>
+                                    <p ng-show="userForm.user_name.$error.maxlength" class="help-block"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    Username is too long.</p>
                                     <?php
                                     if (isset($alert['user'])) {
                                     ?>
-                                    <span class="help-block"><?=$alert['user']?>.</span>
+                                    <span class="help-block"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    <?=$alert['user']?>.</span>
                                     <?php
                                     }
                                     ?>
                                 </div>
                                 <div ng-class="{ 'has-error' : userForm.user_pass.$invalid && !userForm.user_pass.$pristine }" class="form-group <?=isset($alert['pass_length'])?'has-error':''?>">
                                     <input class="form-control" placeholder="Password" name="user_pass" type="password" value="" ng-model="user.pass" required ng-minlength="6">
-                                    <p ng-show="userForm.user_pass.$error.minlength" class="help-block">Password too short.</p>
+                                    <p ng-show="userForm.user_pass.$error.minlength" class="help-block"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    Password too short.</p>
                                     <?php
                                     if (isset($alert['pass_length'])) {
                                     ?>
-                                    <span class="help-block"><?=$alert['pass_length']?>.</span>
+                                    <span class="help-block"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                    <?=$alert['pass_length']?>.</span>
                                     <?php
                                     }
                                     ?>
@@ -101,7 +113,8 @@ else{
                                     <?php
                                     if (isset($alert['pass'])) {
                                     ?>
-                                    <span class="help-block"><?=$alert['pass']?>.</span>
+                                    <span class="help-block"><i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                                     <?=$alert['pass']?>.</span>
                                     <?php
                                     }
                                     ?>
@@ -119,6 +132,17 @@ else{
                                 <div class="form-group" >
                                 <!-- Change this to a button or input when using this as a form -->
                                     <button type="submit" class="btn btn-lg btn-primary btn-block" name="submit">Register</button>
+                                     <div class="form-group <?=isset($alert['reg'])?'has-success':''?>">
+                                     <?php
+                                    if (isset($alert['reg'])) {
+                                    ?>
+                                    <span class="help-block"><i class="fa fa-check-circle" aria-hidden="true"></i>
+
+                                     <?=$alert['reg']?>.</span>
+                                    <?php
+                                    }
+                                    ?>
+                                     </div>
                                 </div>
                             </fieldset>
                         </form>
