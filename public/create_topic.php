@@ -9,7 +9,7 @@ if(isset($_SESSION['signed_in'])){
     if($_SESSION['signed_in'] == false)
     {
         //the user is not signed in
-        echo 'Sorry, you have to be <a href="/forum/signin.php">signed in</a> to create a topic.';
+        echo '<div class="alert alert-danger main-items">Sorry, you have to be <a href="/forum/signin.php">signed in</a> to create a topic.</div>';
     }
     else
     {
@@ -21,7 +21,7 @@ if(isset($_SESSION['signed_in'])){
              
             if(!$result)
             {
-                echo 'An error occured while creating your topic. Please try again later.';
+                echo '<div class="alert alert-danger main-items">An error occured while creating your topic. Please try again later.</div>';
             }
             else
             {
@@ -89,7 +89,9 @@ if(isset($_SESSION['signed_in'])){
                                 $result = mysqli_query($connection,$sql);
                                  
                                 //after a lot of work, the query succeeded!
-                                echo 'You have successfully posted your idea <a href="topic.php?id='. $topicid . '">Please check the status of idea after some time</a>.';
+                                echo '<div class="alert alert-success main-items">
+                                        You have successfully posted your idea Please <a href="topic.php?id='. $topicid . '">track</a> the status of your idea.
+                                        </div>';
                             }
                         }
                     }
@@ -119,11 +121,11 @@ if(isset($_SESSION['signed_in'])){
             {
                 if($_SESSION['user_level'] == 1)
                 {
-                    echo 'You have not created categories yet.';
+                    echo '<div class="alert alert-danger main-items">You have not created categories yet.</div>';
                 }
                 else
                 {
-                    echo 'Before you can post a topic, you must wait for an admin to create some categories.';
+                    echo '<div class="alert alert-danger main-items">Before you can post a topic, you must wait for an admin to create some categories.</div>';
                 }
             }
             else

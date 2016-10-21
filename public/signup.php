@@ -39,7 +39,7 @@ else{
             }
             else{
                 if(mysqli_num_rows($pastosql) != 0){
-                        echo 'Username is already in use';
+                        $alert['user']='Username is already in use';
                     }
                 
                 else{
@@ -54,7 +54,7 @@ else{
                         }
                         else
                         {
-                            echo'Registered <a href="login.php">Log in</a>';
+                            $alert['change']='Registered <a href="login.php">Log in</a>';
                         }
                     }
         }
@@ -118,7 +118,18 @@ else{
                                 </div>
                                 <div class="form-group" >
                                 <!-- Change this to a button or input when using this as a form -->
+                                <div class="form-group <?=isset($alert['change'])?'has-success':''?>">
                                     <button type="submit" class="btn btn-lg btn-primary btn-block" name="submit">Register</button>
+                                    <?php
+                                    if (isset($alert['change'])) {
+                                    ?>
+                                    <span class="help-block"><i class="fa fa-check-circle" aria-hidden="true"></i>
+
+                                     <?=$alert['change']?>.</span>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
                                 </div>
                             </fieldset>
                         </form>

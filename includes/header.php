@@ -68,7 +68,7 @@ Post your idea
                                                                                     }
                                                                                 ?>
                         </span></li>
-                        <li><a class="fa fa-key" aria-hidden="true href="#"> Change password</a></li>
+                        <li><a class="fa fa-key" aria-hidden="true" href="changepass.php"> Change password</a></li>
                         <?php
                         if (isset($_SESSION['user_level']) && $_SESSION['user_level']==1) {
                         ?>
