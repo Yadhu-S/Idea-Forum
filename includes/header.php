@@ -24,67 +24,65 @@ session_start();
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; margin-left:10%; margin-right:10%; border-bottom: 1px solid #BDBDBD;">
     <div class="navbar-header">
         
-        <a class="navbar-brand" href="index.php"> <span class=head><i class="fa fa-home fa-lg" aria-hidden="true"></i> Post Your Ideas</span></a>
+        <a class="navbar-brand" href="index.php"> 
+            <span class=head><i class="fa fa-home fa-lg" aria-hidden="true"></i> Creative Spark 2K16            </span>
+      </a>
     </div>
     <ul class="nav navbar-top-links navbar-right">
         <?php
-            if(isset($_SESSION['signed_in'])==false || isset($_SESSION['signed_in']) == false){
+        if(isset($_SESSION['signed_in'])==false || isset($_SESSION['signed_in']) == false){
                
-        ?>
-        <li>
-            <a href="login.php"> <i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
-        </li>
-        <li>
-            <a href="signup.php"> <i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
-        </li>
-        <?php
-        } else{
-        ?>
-        <?php
-                if (isset($_SESSION['user_level']) && $_SESSION['user_level']==1) {
+            ?>
+            <li>
+                <a href="login.php"> <i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
+            </li>
+            <li>
+                <a href="signup.php"> <i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+            </li>
+            <?php
+        } 
+        else{
                 ?>
-         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                Categories
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
                 
-                <li><a href="create_cat.php">Create</a></li>
-                
-                <li><a href="index.php">List</a></li>
-            </ul>
-        </li>
-         <?php
-        // echo '<a class="item" href="login.php">Log in</a> or <a class="item" href="signup.php">create an account</a>.';
+                <li>
+                    <a href="create_topic.php" >
+                        <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+Post your idea
+                    </a>
+                 </li>
+                <li>
+                    <a href="yourid.php">
+                        <i class="fa fa-lightbulb-o fa-lg" aria-hidden="true"></i> Your Idea
+                    </a>
+                </li>
+                  
+               
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        <i i class="fa fa-user" aria-hidden="true"></i>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class=drop> <span> <?php if(isset($_SESSION['signed_in'])&&$_SESSION['signed_in']==true){
+                                                                                            echo $_SESSION['user_name']; 
+                                                                                    }
+                                                                                ?>
+                        </span></li>
+                        <li><a class="fa fa-key" aria-hidden="true href="#"> Change password</a></li>
+                        <?php
+                        if (isset($_SESSION['user_level']) && $_SESSION['user_level']==1) {
+                        ?>
+                            <li><a href="create_cat.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Category</a></li>
+                        <?php
+                        }
+                        ?>
+                        <li ><a class="fa fa-sign-out" aria-hidden="true" href="signout.php"> Log out</a></li>
+                        
+                    </ul>
+                </li>
+            <?php
         }
-        ?>
-        
-        <li>
-            <a href="create_topic.php" >
-                Create new post
-            </a>
-         </li>
-          
-       
-        <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <i i class="fa fa-user" aria-hidden="true"></i>
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li class=drop> <span> <?php if(isset($_SESSION['signed_in'])&&$_SESSION['signed_in']==true){
-                                                                                    echo $_SESSION['user_name']; 
-                                                                            }
-                                                                        ?>
-                </span></li>
-                <li ><a class="fa fa-sign-out" aria-hidden="true" href="signout.php"> Log out</a></li>
-                <li><a class="fa fa-key" aria-hidden="true href="#"> Change password</a></li>
-            </ul>
-        </li>
-       <?php
-            }
-                ?>
+            ?>
     </ul>
     
 </nav>
