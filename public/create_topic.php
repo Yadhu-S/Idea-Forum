@@ -185,14 +185,31 @@ if(isset($_SESSION['signed_in'])){
     }
 }
 else{
-    echo '
-            <div class="ce">
-
-                <div class="alert alert-info vertical-center-row" > 
-                 <i class="fa fa-exclamation-circle fa-5x" aria-hidden="true"></i></br>
-                <strong >Please log in.</strong>
+    ?>
+     <div ng-app="validationApp" ng-controller="mainController">
+    <div class="row">
+        <div class="col-sm-9 col-md-4 col-md-offset-4 col-sm-offset-2">
+         <div id="p">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Creative Spark Registration</h3>
                 </div>
-            </div>';
+                <div class="panel-body">
+                    <form role="form" name="userForm" action="login.php" method="post" ng-submit="submitForm(userForm.$valid)" novalidate>
+                        <fieldset>
+                                <a class="btn btn-lg btn-primary btn-block" href="login.php">Log in</a>
+                                </br>
+                                <a  class="btn btn-lg btn-primary btn-block" href="signup.php">Register</a>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <?php
 }
  
 require('../includes/footer.php');

@@ -70,7 +70,7 @@ Post your idea
                         </span></li>
                         <li><a class="fa fa-key" aria-hidden="true" href="changepass.php"> Change password</a></li>
                         <?php
-                        if (isset($_SESSION['user_level']) && $_SESSION['user_level']==1) {
+                        if (isset($_SESSION['user_level']) && $_SESSION['user_level']>=1) {
                         ?>
                             <li><a href="create_cat.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Category</a></li>
                         <?php
