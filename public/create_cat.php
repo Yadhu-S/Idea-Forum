@@ -3,7 +3,7 @@ require('../includes/connect.php');
 require('../includes/header.php');
 require('../includes/function.php');
 $alert=array();
-if(isset($_SESSION['user_level'])&&$_SESSION['user_level']==1){
+if(isset($_SESSION['user_level'])&&$_SESSION['user_level']>=1){
 	if(isset($_POST['newcat'])){
 		$catname=$_POST['cat_name'];
 		$catdesc=$_POST['cat_description'];

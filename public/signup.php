@@ -61,7 +61,11 @@ else{
                         }
                         else
                         {
+<<<<<<< HEAD
                            $alert['reg']='Registered <a href="login.php">Log in</a>';
+=======
+                            $alert['change']='Registered <a href="login.php">Log in</a>';
+>>>>>>> comp
                         }
                     }
         }
@@ -131,7 +135,9 @@ else{
                                 </div>
                                 <div class="form-group" >
                                 <!-- Change this to a button or input when using this as a form -->
+                                <div class="form-group <?=isset($alert['change'])?'has-success':''?>">
                                     <button type="submit" class="btn btn-lg btn-primary btn-block" name="submit">Register</button>
+<<<<<<< HEAD
                                      <div class="form-group <?=isset($alert['reg'])?'has-success':''?>">
                                      <?php
                                     if (isset($alert['reg'])) {
@@ -143,6 +149,18 @@ else{
                                     }
                                     ?>
                                      </div>
+=======
+                                    <?php
+                                    if (isset($alert['change'])) {
+                                    ?>
+                                    <span class="help-block"><i class="fa fa-check-circle" aria-hidden="true"></i>
+
+                                     <?=$alert['change']?>.</span>
+                                    <?php
+                                    }
+                                    ?>
+                                </div>
+>>>>>>> comp
                                 </div>
                             </fieldset>
                         </form>
