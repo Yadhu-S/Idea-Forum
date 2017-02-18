@@ -22,12 +22,13 @@ $sql2="SELECT state FROM control ";
         }
 ?>
     <script>var num_topic=<?php echo json_encode($topic_number)?></script>
+    <img src="bg.png" style="width:100%;height:10%;padding-bottom: 20px">
+    <div class="well well-sm" >
 
 
 <?php
  
-if(!$result)
-{
+if(!$result){
     echo 'The categories could not be displayed, please try again later.';
 }
 else
@@ -49,68 +50,88 @@ else
         mysqli_query($connection,$passql);
     }
     if (isset($_SESSION['user_level']) && $_SESSION['user_level']>=1) {
-        if(mysqli_num_rows($result) == 0)
-        {
+        if(mysqli_num_rows($result) == 0){
             echo 'No categories defined yet.';
         }
         else
         {
-            while($row = mysqli_fetch_assoc($result))
-            { 
-            $sql_topic = "SELECT   topic_id,topic_subject,topic_date,topic_cat
-                    FROM topics
-                    WHERE topic_cat = " . $row['cat_id'];
-             
-            $result_topic = mysqli_query($connection,$sql_topic);
+            while($row = mysqli_fetch_assoc($result)){ 
+                $sql_topic = "SELECT users.user_name,topic_id,topic_subject,topic_date,topic_cat,topic_by
+                        FROM topics
+                        LEFT JOIN users ON topics.topic_by=users.user_id
+                        WHERE topic_cat = " . $row['cat_id'];
+                 
+                $result_topic = mysqli_query($connection,$sql_topic);
 
-            ?>
-            <div class="main-items">
-                 <h4><?=$row['cat_name']?></h4>
-                
-                <ol class="sub-items">
-                    <li class="sub-item">
-                    <?php if($result_topic){
-                            if(mysqli_num_rows($result) != 0){
-                            while($row = mysqli_fetch_assoc($result_topic)){
-                    ?>
-                                <h5><?php 
-                                    echo '<a id="hey" href="topic.php?id=' . $row['topic_id'] . '" style="text-decoration: none;"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp' .$row['topic_subject'].'</a>'; 
-                                    ?>
-                                    <div class="pull-right rating-stars">
-                                        <span data-topic-id="<?=$row['topic_id']?>">
-                                            <?php
+                ?>
 
-                                                
-                                                if(!isset($_SESSION['user_id']))
-                                                {
-                                                    echo $star->getRating("size-3", "html", $row['topic_id']);
-                                                }
-                                                else{
-                                                    echo $star->getRating("userChoose size-3", "html", $row['topic_id']);
-                                                }
-                                                if(isset($_POST['id']) && isset($_POST['rating']) && $_POST['id'] == "index_page"){
-                                                 $star->id = $_POST['id'];
-                                                 $star->addRating($_SESSION['user_name'], $_POST['rating'],$_POST['top']);
-                                                }
-                                            ?>
-                                        </span>
-                                    </div>                                    
-                                </h5>
-                        <?php
-                            }
-
-                            
-                            } 
-                        }
-                    ?>
-                    </li>
+                <div class="main-items">
+                     <h4><?=$row['cat_name']?></h4>
                     
-                </ol>
-            </div>
-            <?php
-            }
-            
+                    <ol class="sub-items">
+                        <li class="sub-item">
+                        <table class="table table-bordered table-hover ptable">
+                            <thead style="background-color: #9E9E9E;">
+                            <tr>
+                                <th>Post</th>
+                                <th>Post by</th>
+                                <th>Post date</th>
+                                <th >Rating</th>
+                            </tr>
+                            </thead>
+                                <?php   
+                                    if($result_topic){
+                                        if(mysqli_num_rows($result) != 0){
+                                            while($row = mysqli_fetch_assoc($result_topic)){
+                                            ?>      
+                                                    
+                                                <tbody>
+                                                    <tr>
+                                                        <td><?php 
+                                                            echo '<a id="hey" href="topic.php?id=' . $row['topic_id'] . '" style="text-decoration: none;"><i class="fa fa-file-text" aria-hidden="true"></i>&nbsp' .$row['topic_subject'].'</a>'; 
+                                                            ?>
+                                                        </td>
+                                                        <td><?php echo $row['user_name'];?></td>
+                                                        <td><?php echo $row['topic_date'];?></td>
+                                                        <td class="rating-stars">
+                                                            
+                                                            <span data-topic-id="<?=$row['topic_id']?>">
+                                                                <?php
+
+                                                                    
+                                                                    if(!isset($_SESSION['user_id']))
+                                                                    {
+                                                                        echo $star->getRating("size-3", "html", $row['topic_id']);
+                                                                    }
+                                                                    else{
+                                                                        echo $star->getRating("userChoose size-3", "html", $row['topic_id']);
+                                                                    }
+                                                                    if(isset($_POST['id']) && isset($_POST['rating']) && $_POST['id'] == "index_page"){
+                                                                     $star->id = $_POST['id'];
+                                                                     $star->addRating($_SESSION['user_name'], $_POST['rating'],$_POST['top']);
+                                                                    }
+                                                                ?>
+                                                            </span>
+                                                           
+                                                        </td> 
+                                                    </tr>  
+                                                </tbody>                                 
+                                                       
+                                            <?php
+                                            }                       
+                                        } 
+                                    }
+                                ?>
+                        </table>            
+                        </li>   
+                    </ol>
+                </div>
+                <?php
+            }    
         }
+        ?>
+        </div>
+        <?php
         if (isset($_SESSION['user_level']) && $_SESSION['user_level']==2) {
             $sql2="SELECT state FROM control ";
             $resu=mysqli_query($connection,$sql2);

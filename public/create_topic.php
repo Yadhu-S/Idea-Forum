@@ -192,7 +192,7 @@ else{
          <div id="p">
             <div class="login-panel panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">Creative Spark Registration</h3>
+                    <h3 class="panel-title">Log in/Register</h3>
                 </div>
                 <div class="panel-body">
                     <form role="form" name="userForm" action="login.php" method="post" ng-submit="submitForm(userForm.$valid)" novalidate>

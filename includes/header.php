@@ -21,11 +21,11 @@ session_start();
 </head>
 <body>
 <div id="wrapper">
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; margin-left:10%; margin-right:10%; border-bottom: 1px solid #BDBDBD;">
+<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0; border-bottom: 1px solid #BDBDBD;">
     <div class="navbar-header">
         
         <a class="navbar-brand" href="index.php"> 
-            <span class=head><i class="fa fa-home fa-lg" aria-hidden="true"></i> Creative Spark 2K16            </span>
+            <span class=head><i class="fa fa-home fa-lg" aria-hidden="true"></i> Cite Idea Box  </span>
       </a>
     </div>
     <ul class="nav navbar-top-links navbar-right">

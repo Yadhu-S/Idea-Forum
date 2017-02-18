@@ -1,6 +1,10 @@
  
 /* begin table styles */
 
+#pst{
+  background: #2196F3;
+}
+
 body {
     margin: auto;
     width: 100%;
@@ -37,8 +41,7 @@ body {
 .main-items {
     margin-top:10px;
     margin-bottom: 0;
-    margin-left: 10%;
-    margin-right: 10%;
+   
 }
 
 .main-items h4 a, .main-items h5 a:hover, .main-items h5 a:active, .main-items h4 a:visited {
@@ -51,8 +54,6 @@ body {
     margin:0; 
     background: #0277BD;
     color: white;
-    border-left: 3px solid #BDBDBD;
-    border-bottom: 3px solid #BDBDBD;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     padding: 5px 5px 5px 7px;
@@ -60,15 +61,17 @@ body {
 
 .sub-items {
     list-style-type: none;
-    margin-top: 10px;
+    margin-top: 3px;
     padding-left: 0;
 }
 
 .sub-items .sub-item {
     color: #212121;
     padding-top: 1px;
-    padding-left: 18px;
-    background: #E0E0E0;
+    padding: 3px;
+    background-color: lightgray;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     border: 1px solid #BDBDBD;
     
 }
@@ -180,7 +183,7 @@ body {
 }
 
 #hey{
-    color: #757575;
+    color: #383838;
 }
 /* The switch - the box around the slider */
 .switch {
