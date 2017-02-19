@@ -50,6 +50,7 @@ if(isset($_SESSION['signed_in'])){
                     if(empty($alert)){
                         //the form has been posted, so save it
                         //insert the topic into the topics table first, then we'll save the post into the posts table
+                        $tm=date("Y-m-d H:i");
                         $sql = "INSERT INTO 
                                     topics(topic_subject,
                                            topic_date,

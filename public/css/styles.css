@@ -8,16 +8,26 @@
 body {
     margin: auto;
     width: 100%;
+    
 }
 /* bubble */
    .bubble {
     position: relative;
     width: 75%;
     margin-left: 10%;
-    height: auto;
+    height: 150px;
+
+    background: #e0e0e0;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+   .nbubble {
+    position: relative;
     width: 75%;
-    padding: 10px;
-    background: #BDBDBD;
+    margin-left: 10%;
+    height: 150px;
+    background: #e0e0e0;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -30,10 +40,15 @@ body {
     left: 2px;
     border-style: solid;
     border-width: 0 15px 15px;
-    border-color: #BDBDBD transparent;
+    border-color: #0277bd transparent;
     display: block;
     width: 0;
     z-index: 1;
+}
+
+.cntnt{
+  margin-left: 130px;
+  padding-top: 10px;
 }
 
 
@@ -42,6 +57,11 @@ body {
     margin-top:10px;
     margin-bottom: 0;
    
+}
+
+.usnam {
+  padding-left: 10px;
+
 }
 
 .main-items h4 a, .main-items h5 a:hover, .main-items h5 a:active, .main-items h4 a:visited {
@@ -155,9 +175,11 @@ body {
     text-decoration: none;
     color: white;
     background: #0277BD;
-    margin-left: 10%;
+  box-shadow: 7px 0px 4px 0px #888888;
+    float: left;
     width: 120px;
-    padding-left: 20px;
+    height: 150px;
+    padding: 6px;
 }
 .imp{
     -webkit-border-radius: 2px;
@@ -166,8 +188,10 @@ body {
     text-decoration: none;
     color: white;
     background: #E53935;
-    margin-left: 10%;
+    box-shadow: 7px 0px 4px 0px #888888;
+    float: left;
     width: 120px;
+    height: 150px;
     padding: 6px;
 }
 

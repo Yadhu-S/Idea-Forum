@@ -27,7 +27,7 @@ $sql2="SELECT state FROM control ";
 
 
 <?php
- 
+$tm=date("Y-m-d h:i:");
 if(!$result){
     echo 'The categories could not be displayed, please try again later.';
 }
