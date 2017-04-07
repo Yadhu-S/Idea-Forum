@@ -16,52 +16,114 @@ if(isset($_SESSION['signed_in'])&&$_SESSION['signed_in']==true)
             </div>';
 }
 else{
-    if(isset($_POST['login'])){
-        $username=$_POST['user_name'];
-        $password=$_POST['user_pass'];
+    $sql2="SELECT state FROM control ";
+    $resu=mysqli_query($connection,$sql2);
+    while($row = mysqli_fetch_assoc($resu)){
+        $statec=$row['state'];
+    }
+    if($statec==1){
+        if(isset($_POST['login'])){
+            $username=$_POST['user_name'];
+            $password=$_POST['user_pass'];
 
-        if($username == "") {
-            $alert['username'] = "Username cannot be empty";
-            
-        }
-        if($password == ""){
-            $alert['password'] = "Password cannot be empty";
-        }
+            if($username == "") {
+                $alert['username'] = "Username cannot be empty";
+                
+            }
+            if($password == ""){
+                $alert['password'] = "Password cannot be empty";
+            }
 
-        if(empty($alert)){
-            $user_id=mysqli_real_escape_string($connection,$username);
-            $sql = "SELECT user_id,user_name,user_level,user_pass
-                    FROM   users
-                    WHERE BINARY user_name = '{$user_id}'";
-            $result = mysqli_query($connection,$sql);
-            if(!$result) {
-                $alert['user'] = 'Something went wrong while signing in. Please try again later.';
-                // echo 'Something went wrong while signing in. Please try again later.';
-            } else {
-                    $existing_hash="";
-                    while($row = mysqli_fetch_assoc($result)){
-                        $existing_hash= $row['user_pass'];
-                        $us_id=$row['user_id'];
-                        $usr=$row['user_name'];
-                        $us_lev=$row['user_level'];
-                    }
-                    $hash=password_verify ($password,$existing_hash);
-                    if(mysqli_num_rows($result) == 0 || $hash!=TRUE) {
-                        $alert['user'] = 'Username/Password is incorrect';
-                    }
-                    else{
-                        $_SESSION['signed_in'] = true;
-                        $_SESSION['user_id']    = $us_id;
-                        $_SESSION['user_name']  = $usr;
-                        $_SESSION['user_level'] = $us_lev;    
-                        redirect_to("index.php");
-                    }
+            if(empty($alert)){
+                $user_id=mysqli_real_escape_string($connection,$username);
+                $sql = "SELECT user_id,user_name,user_level,user_pass
+                        FROM   users
+                        WHERE BINARY user_name = '{$user_id}'";
+                $result = mysqli_query($connection,$sql);
+                if(!$result) {
+                    $alert['user'] = 'Something went wrong while signing in. Please try again later.';
+                    // echo 'Something went wrong while signing in. Please try again later.';
+                } else {
+                        $existing_hash="";
+                        while($row = mysqli_fetch_assoc($result)){
+                            $existing_hash= $row['user_pass'];
+                            $us_id=$row['user_id'];
+                            $usr=$row['user_name'];
+                            $us_lev=$row['user_level'];
+                        }
+                        $hash=password_verify ($password,$existing_hash);
+                        if(mysqli_num_rows($result) == 0 || $hash!=TRUE) {
+                            $alert['user'] = 'Username/Password is incorrect';
+                        }
+                        else{
+                            $_SESSION['signed_in'] = true;
+                            $_SESSION['user_id']    = $us_id;
+                            $_SESSION['user_name']  = $usr;
+                            $_SESSION['user_level'] = $us_lev;    
+                            redirect_to("index.php");
+                        }
+                }
+            }
+            else {
+                $alert['user'] = "Username/Password cannot be left empty";
+                // echo "Username/Password cannot be left empty";
             }
         }
-        else {
-            $alert['user'] = "Username/Password cannot be left empty";
-            // echo "Username/Password cannot be left empty";
+    }
+    else{
+        if(isset($_POST['login'])){
+            $username=$_POST['user_name'];
+            $password=$_POST['user_pass'];
+            $use_lev="";
+            if($username == "") {
+                $alert['username'] = "Username cannot be empty";
+                
+            }
+            if($password == ""){
+                $alert['password'] = "Password cannot be empty";
+            }
+
+            if(empty($alert)){
+                $user_id=mysqli_real_escape_string($connection,$username);
+                $sql = "SELECT user_id,user_name,user_level,user_pass
+                        FROM   users
+                        WHERE BINARY user_name = '{$user_id}'";
+                $result = mysqli_query($connection,$sql);
+                if(!$result) {
+                    $alert['user'] = 'Something went wrong while signing in. Please try again later.';
+                    // echo 'Something went wrong while signing in. Please try again later.';
+                } else {
+                        $existing_hash="";
+                        while($row = mysqli_fetch_assoc($result)){
+                            $existing_hash= $row['user_pass'];
+                            $us_id=$row['user_id'];
+                            $usr=$row['user_name'];
+                            $us_lev=$row['user_level'];
+                        }
+                        
+                        $hash=password_verify ($password,$existing_hash);
+                        if(mysqli_num_rows($result) == 0 || $hash!=TRUE || $us_lev!=2) {
+                            
+                            if($us_lev!=2)
+                                $alert['user']="All logins disabled temporarly";
+                            else
+                                $alert['user'] = 'Username/Password is incorrect';
+                        }
+                        else{
+                            $_SESSION['signed_in'] = true;
+                            $_SESSION['user_id']    = $us_id;
+                            $_SESSION['user_name']  = $usr;
+                            $_SESSION['user_level'] = $us_lev;    
+                            redirect_to("index.php");
+                        }
+                }
+            }
+            else {
+                $alert['user'] = "Username/Password cannot be left empty";
+                // echo "Username/Password cannot be left empty";
+            }
         }
+
     }
     ?>
    

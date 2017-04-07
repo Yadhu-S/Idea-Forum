@@ -18,41 +18,53 @@
             ?>
 
             <div class="main-items">
-            <div class="col-sm-9 col-md-4 col-md-offset-4 col-sm-offset-2">
-                <form action="index.php" method="post">
-                    <p class="pull-right alert alert-info"><i class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i> Total Posts :
-                            <?php
-                            echo $topic_number;
-                            ?>
-                    </p>
-                    <p class="pull-right alert alert-info"><i class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i> Total Users :
-                            <?php
-                            echo $user_num;
-                            ?>
-                    </p>
-                      <div class="alert alert-info"> <strong><i class="fa fa-wrench fa-2x" aria-hidden="true"></i>Control</strong> </div>           
-                        <label class="switch">
-                            <?php
-                            if($statec==1){
-                                ?>
-                                <input type="checkbox" name="check" value="Yes" checked />
+                <div class="col-sm-9 col-md-4 col-md-offset-4 col-sm-offset-2">
+                    <form action="index.php" method="post">
+                        <p class="pull-right alert alert-info"><i class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i> Total Posts :
                                 <?php
-                            }
-                            else{
+                                echo $topic_number;
                                 ?>
-                                <input type="checkbox" name="check" value="Yes" /> 
+                        </p>
+                        <p class="pull-right alert alert-info"><i class="fa fa-lightbulb-o fa-2x" aria-hidden="true"></i> Total Users :
+                              
                                 <?php
-                            }
-                            ?>
-                            <div class="slider round">
-                            </div>
-                        </label>
-                        </br><button type="submit" class="btn btn-lg btn-primary" name="submit"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
-                    </div>
-                </form>
-            </div>
+                                echo $user_num;
+                                ?>
+                                
+                        </p>
+                          <div class="alert alert-info"> <strong><i class="fa fa-wrench fa-2x" aria-hidden="true"></i>Control</strong> </div>           
+                            <label class="switch">
+                                <?php
+                                if($statec==1){
+                                    ?>
+                                    <input type="checkbox" name="check" value="Yes" checked />
+                                    <?php
+                                }
+                                else{
+                                    ?>
+                                    <input type="checkbox" name="check" value="Yes" /> 
+                                    <?php
+                                }
+                                ?>
+                                <div class="slider round">
+                                </div>
+                            </label>
+                            </br><button type="submit" class="btn btn-lg btn-primary" name="submit"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <?php
         }
+        else{
+            echo '
+                    <div class="ce">
+
+                        <div class="alert alert-danger vertical-center-row" >
+                        <i class="fa fa-exclamation-triangle fa-5x" aria-hidden="true"></i></br>
+                        <strong >Forbidden.</strong>
+                        </div>
+                    </div>';
+        }            
 	require('../includes/footer.php');
 ?>

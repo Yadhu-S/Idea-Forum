@@ -1,8 +1,8 @@
 </div><!-- content -->
 </div><!-- wrapper -->
 </div>
-<footer style="margin:12px auto; width:986px; font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, sans-serif; color:#444; font-size:12px; padding:7px; text-align:center;">
-
+<div id="footer" style="margin:12px auto; width:986px; font-family:Segoe, 'Segoe UI', 'DejaVu Sans', 'Trebuchet MS', Verdana, sans-serif; color:#444; font-size:12px; padding:7px; text-align:center;">
+<img src="../public/images/badge.png" style="width:50px;height:auto ;">
 <div>© Mar Baselios Christian College of Engineering And Technology.</div>
 <div>
 <span style="font-size:11px; margin-top:5px;">
@@ -10,8 +10,8 @@
 </span>
 
 </div>
-</footer>
-<div id="footer"></div>
+</div>
+
   
 	<script src="../public/js/jquery.min.js"></script>
     <script src="../public/js/Fr.star.js"></script>

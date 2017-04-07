@@ -30,15 +30,24 @@ session_start();
     </div>
     <ul class="nav navbar-top-links navbar-right">
         <?php
-        if(isset($_SESSION['signed_in'])==false || isset($_SESSION['signed_in']) == false){
+        $sql2="SELECT state FROM control ";
+        $resu=mysqli_query($connection,$sql2);
+        while($row = mysqli_fetch_assoc($resu)){
+            $statec=$row['state'];
+        }
+        if(isset($_SESSION['signed_in'])==false ){
                
             ?>
             <li>
                 <a href="login.php"> <i class="fa fa-sign-in" aria-hidden="true"></i> Log in</a>
             </li>
-            <li>
-                <a href="signup.php"> <i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
-            </li>
+            <?php 
+                if($statec==1){?>
+                    <li>
+                        <a href="signup.php"> <i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+                    </li>
+                <?php
+                }?>
             <?php
         } 
         else{
@@ -70,9 +79,16 @@ Post your idea
                         </span></li>
                         <li><a class="fa fa-key" aria-hidden="true" href="changepass.php"> Change password</a></li>
                         <?php
-                        if (isset($_SESSION['user_level']) && $_SESSION['user_level']>=1) {
+                        if (isset($_SESSION['user_level']) && $_SESSION['user_level']==2) {
                         ?>
                             <li><a href="create_cat.php"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create Category</a></li>
+                        <?php
+                        }
+                        ?>
+                        <?php
+                        if (isset($_SESSION['user_level']) && $_SESSION['user_level']==2) {
+                        ?>
+                            <li><a href="control_page.php"><i class="fa fa-gear" aria-hidden="true"></i> Control pannel</a></li>
                         <?php
                         }
                         ?>
