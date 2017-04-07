@@ -26,6 +26,7 @@ if(isset($_SESSION['signed_in'])){
             else
             {
                 $sub=$_POST['topic_subject'];
+                $newFileName="";
                 $ver ="SELECT topic_subject FROM topics WHERE topic_subject='{$sub}'";
                 $tosql=mysqli_query($connection,$ver);
                 if(mysqli_num_rows($tosql)!=0){
