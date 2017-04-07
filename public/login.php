@@ -74,7 +74,7 @@ else{
         if(isset($_POST['login'])){
             $username=$_POST['user_name'];
             $password=$_POST['user_pass'];
-            $use_lev="";
+            $us_lev="";
             if($username == "") {
                 $alert['username'] = "Username cannot be empty";
                 
@@ -94,6 +94,7 @@ else{
                     // echo 'Something went wrong while signing in. Please try again later.';
                 } else {
                         $existing_hash="";
+
                         while($row = mysqli_fetch_assoc($result)){
                             $existing_hash= $row['user_pass'];
                             $us_id=$row['user_id'];
