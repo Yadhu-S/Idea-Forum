@@ -45,7 +45,7 @@ if(isset($_SESSION['signed_in'])){
                     }
                     if(strlen($cont)<30){
                         
-                        $alert['cont']='Content should contain atleast 30 charaters.';
+                        $alert['cont']='Content should contain at least 30 charaters';
                     }
                     if(empty($alert)){
                         if($_FILES['fileToUpload']['name']!=""){
@@ -166,7 +166,7 @@ if(isset($_SESSION['signed_in'])){
             {?>
         <div class="category_create">
             <div class="form-group">
-           </br><h3 class="panel-title">Post your idea.</h3></br>
+           </br><h3 class="panel-title"><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Post your idea. </h3></br>
                 <form method="post" action="create_topic.php" enctype="multipart/form-data">
                     <div class="form-group <?=isset($alert['Subject'])?'has-error':''?>">
                         <input class="cat_form form-control" placeholder="Subject" name="topic_subject" type="text" autofocus/>
@@ -209,7 +209,7 @@ if(isset($_SESSION['signed_in'])){
                     ?>
                     </div>
                     <div class="form-group <?=isset($alert['img'])?'has-error':''?> <?=isset($alert['img_suc'])?'has-success':''?>">
-                        <label for="fileToUpload">Select file to upload (optional) </label>
+                        <label for="fileToUpload">Select file to upload  (optional) </label>
                         <input type="file" name="fileToUpload" ></br>
                          <?php
                         if (isset($alert['img'])) {
