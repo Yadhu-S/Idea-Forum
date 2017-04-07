@@ -6,7 +6,7 @@
 <div>© Mar Baselios Christian College of Engineering And Technology.</div>
 <div>
 <span style="font-size:11px; margin-top:5px;">
-<i><strong>2013-2017 ECE-B</strong> batch </i> 
+<i>Contributed by <strong>2013-2017 ECE-B</strong> batch </i> 
 </span>
 
 </div>
