@@ -23,7 +23,7 @@ else
         echo 'You must be signed in to post a reply.';
     }
     else
-    {
+    {   
         $pgid=mysqli_real_escape_string($connection,$_GET['id']);
         $idus=mysqli_real_escape_string($connection,$_SESSION['user_id']);
         $cont=mysqli_real_escape_string($connection,$_POST['reply_content']);
@@ -44,7 +44,7 @@ else
                          
         if(!$result)
         {
-            echo '</br>Your reply has not been saved.';
+            echo '</br>Your reply has not been saved.';  
            
         }
         else

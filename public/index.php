@@ -70,7 +70,7 @@ else
                     
                     <ol class="sub-items">
                         <li class="sub-item">
-                        <table class="table table-bordered table-hover ptable">
+                        <table class="table table-bordered table-hover ptable " style="table-layout: fixed;">
                             <thead style="background-color: #9E9E9E;">
                             <tr>
                                 <th>Post</th>

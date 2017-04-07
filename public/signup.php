@@ -25,6 +25,9 @@ else{
         if($password!=$passchek){
             $alert['pass']="Passwords do not match";    
         } 
+        if($mail==""){
+            $alert['adms_no']="Please input your Admission No";
+        }
         else if(strlen($password)<=6){
             $alert['pass_length']="Password should contain at least 6 characters";
             }
@@ -106,12 +109,12 @@ else{
                                     }
                                     ?>
                                 </div>
-                                <div class="form-group <?=isset($alert['mail_valid'])?'has-error':''?>">
+                                <div class="form-group <?=isset($alert['adms_no'])?'has-error':''?>">
                                     <input class="form-control" placeholder="Admission No." name="adm_no" type="number" autofocus>
                                     <?php
-                                    if (isset($alert['mail_valid'])) {
+                                    if (isset($alert['adms_no'])) {
                                     ?>
-                                    <span class="help-block"><?=$alert['mail_valid']?>.</span>
+                                    <span class="help-block"><?=$alert['adms_no']?>.</span>
                                     <?php
                                     }
                                     ?>

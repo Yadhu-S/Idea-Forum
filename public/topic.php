@@ -28,13 +28,21 @@ if(isset($_GET['id'])){
 			while($row = mysqli_fetch_assoc($result))
 			{
 				//display post data
-				echo  '<div class ="top_cont"><h4>'.$row['topic_subject'].'</h4></div>';
+				echo  '<div class ="top_cont">
+							<h4 style="font-size: 18px;
+							    background: #9e9e9e;
+							    color: white;
+							    padding: 6px;
+							    border-radius: 7px;">'.$row['topic_subject'].'
+							</h4>
+						</div>';
 			
 				//fetch the posts from the database
 				$id2=mysqli_real_escape_string($connection,$_GET['id']);
 				$posts_sql = "SELECT posts.post_topic,posts.post_content,
 							posts.post_date,
 							posts.post_by,
+							posts.img_id,
 							users.user_id,
 							users.user_name,
 							users.user_email,
@@ -59,9 +67,10 @@ if(isset($_GET['id'])){
 			
 					while($posts_row = mysqli_fetch_assoc($posts_result))
 					{
-
+						?> 
+						<?php
 						if($flag==1){?>
-							<div class="bubble">
+							<div class="bubble ">
 								<?php
 								$flag=0;  
 								if($posts_row['user_level']==0){
@@ -78,13 +87,26 @@ if(isset($_GET['id'])){
 								<?php
 								}
 								else{
-									?>  <h4><div class="imp"><?php echo $posts_row['user_name'];?>  </br> 
-										</div>
-										</h4> 
-									<?php
+								?>  
+								<div class="imp">
+									<div class="usnam">
+										<h4>
+											<?php echo $posts_row['user_name'];?>
+										</h4>
+									</div>
+								</div>
+								<?php
 								}?>
 								<div class="cntnt ">
 									<?php echo htmlentities(stripslashes($posts_row['post_content'])); ?>
+									</br><?php 
+									if($posts_row['img_id']!=""){?>
+										<div style="float: right; background-color:white; padding: 3px; border-top-left-radius: 10px; border-bottom-left-radius: 10px; box-shadow: 2px 2px 3px #888888;  ">
+											
+											<a href="/cite_form/public/uploads/<?php echo $posts_row['img_id']; ?> "> <i class="fa fa-paperclip" aria-hidden="true"></i> Attached File</a>
+										</div><?php
+									}
+									?>
 								</div>
 							</div>
 						 <?php
@@ -122,26 +144,25 @@ if(isset($_GET['id'])){
 						 <?php
 						}
 					}
+				}	
+				if(!isset($_SESSION['signed_in']))
+				{
+					echo '<div class="top_cont alert alert-info"><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> You must be logged in to reply.';
 				}
-			}
-				
-			if(!isset($_SESSION['signed_in']))
-			{
-				echo '<div class="top_cont alert alert-info"><i class="fa fa-exclamation-circle fa-lg" aria-hidden="true"></i> You must be logged in to reply.';
-			}
-			else
-			{
-				?>
-				
-					<div class="top_cont">
-						</br><label>Post your reply: <i class="fa fa-reply" aria-hidden="true"></i>
-								</label>
-							<form name="reForum" method="post" action="reply.php?id=<?php echo $row['topic_id'] ?>">
-							<textarea placeholder="Reply" class="cat_desc" name="reply_content" required></textarea><br />
-							<input class="btn btn-md btn-primary" type="submit" value="Submit reply" />
-						</form>
-					</div>;
-				<?php			
+				else
+				{
+					?>
+					
+						<div class="top_cont">
+							</br><label>Post your reply: <i class="fa fa-reply" aria-hidden="true"></i>
+									</label>
+								<form name="reForum" method="post" action="reply.php?id=<?php echo $row['topic_id'] ?>">
+								<textarea placeholder="Reply" class="cat_desc" name="reply_content" required></textarea><br />
+								<input class="btn btn-md btn-primary" type="submit" value="Submit reply" />
+							</form>
+						</div>;
+					<?php			
+				}
 			}			
 		}
 	}

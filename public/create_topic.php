@@ -48,6 +48,39 @@ if(isset($_SESSION['signed_in'])){
                         $alert['cont']='Content should contain atleast 30 charaters.';
                     }
                     if(empty($alert)){
+                        if($_FILES['fileToUpload']['name']!=""){
+                            $target_dir = "uploads/";
+                            $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+                            $newFileName = uniqid('up-', true). '.' . strtolower(pathinfo($_FILES['fileToUpload']['name'],PATHINFO_EXTENSION));
+                            //echo $newFileName;
+                            $uploadOk = 1;
+                            $FileType = pathinfo($target_file,PATHINFO_EXTENSION);
+                            $imageFileType=strtolower($FileType);
+                            //echo $imageFileType;
+                            // Check file size
+                            //echo $_FILES['fileToUpload']['error'];
+                            //echo $_FILES['fileToUpload']['size'] ;
+                            if ($_FILES["fileToUpload"]["size"] > 2*1024*1024) {
+                                $alert['img'] ="Sorry, your file is too large.";
+                                
+                                $uploadOk = 0;
+                            }
+                            // Allow certain file formats
+                            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                            && $imageFileType != "gif" && $imageFileType != "pdf" && $imageFileType != "doc" && $imageFileType != "docx" ) {
+                                $alert['img'] = '"<strong>.'.$imageFileType.'</strong>" extension is not supported' ;
+                                $uploadOk = 0;
+                            }
+                            // Check if $uploadOk is set to 0 by an error
+                             if($uploadOk) {
+                                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], 'uploads/' . $newFileName)) {
+                                    $alert['img_suc'] = "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+
+                                } else {
+                                    $alert['img'] = "Sorry, there was an error uploading your file.";
+                                }
+                            }
+                        }
                         //the form has been posted, so save it
                         //insert the topic into the topics table first, then we'll save the post into the posts table
                         $tm=date("Y-m-d H:i");
@@ -73,8 +106,8 @@ if(isset($_SESSION['signed_in'])){
                             $topicid = mysqli_insert_id($connection);
                             
                             $user_id =$_SESSION['user_id'];
-                            $sql = "INSERT INTO posts(post_content,post_date,post_topic,post_by)
-                                    VALUES      ('{$cont}',NOW(),'{$topicid}','{$user_id}')";
+                            $sql = "INSERT INTO posts(post_content,post_date,post_topic,post_by,img_id)
+                                    VALUES      ('{$cont}',NOW(),'{$topicid}','{$user_id}','{$newFileName}')";
                             $result = mysqli_query($connection,$sql);
                              
                             if(!$result)
@@ -134,7 +167,7 @@ if(isset($_SESSION['signed_in'])){
         <div class="category_create">
             <div class="form-group">
            </br><h3 class="panel-title">Post your idea.</h3></br>
-                <form method="post" action="">
+                <form method="post" action="create_topic.php" enctype="multipart/form-data">
                     <div class="form-group <?=isset($alert['Subject'])?'has-error':''?>">
                         <input class="cat_form form-control" placeholder="Subject" name="topic_subject" type="text" autofocus/>
                         <?php
@@ -174,6 +207,29 @@ if(isset($_SESSION['signed_in'])){
                         <?php
                         }
                     ?>
+                    </div>
+                    <div class="form-group <?=isset($alert['img'])?'has-error':''?> <?=isset($alert['img_suc'])?'has-success':''?>">
+                        <label for="fileToUpload">Select file to upload (optional) </label>
+                        <input type="file" name="fileToUpload" ></br>
+                         <?php
+                        if (isset($alert['img'])) {
+                        ?>
+                        <span class="help-block"><?=$alert['img']?>.</span>
+                        <?php
+                        }
+                        ?>
+                        <?php
+                        if (isset($alert['img_suc'])) {
+                        ?>
+                        <span class="help-block"><i class="fa fa-check-circle" aria-hidden="true"></i>
+
+                         <?=$alert['img_suc']?>.</span>
+                        <?php
+                        }
+                        ?>
+                        <div class="alert alert-info">
+                          Only <strong>pdf,doc,docx,jpg,jpeg,gif,png</strong> files formats are supported and size should be less than 2Mb.
+                        </div>
                     </div>
                     </br>
                     <input class="btn btn-md btn-primary" type="submit" value="Create topic" name="submit" />

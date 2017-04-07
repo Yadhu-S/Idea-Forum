@@ -16,7 +16,6 @@ body {
     width: 75%;
     margin-left: 10%;
     height: 150px;
-
     background: #e0e0e0;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -175,7 +174,7 @@ body {
     text-decoration: none;
     color: white;
     background: #0277BD;
-  box-shadow: 7px 0px 4px 0px #888888;
+  box-shadow: 2px 5px 4px 0px #888888;
     float: left;
     width: 120px;
     height: 150px;
@@ -188,7 +187,7 @@ body {
     text-decoration: none;
     color: white;
     background: #E53935;
-    box-shadow: 7px 0px 4px 0px #888888;
+    box-shadow: 2px 5px 4px 0px #888888;
     float: left;
     width: 120px;
     height: 150px;

@@ -98,11 +98,7 @@ else{
                                 }
                                 ?>
                             </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                </label>
-                            </div>
+                            
                             <div class="form-group <?=isset($alert['user'])?'has-error':''?>">
                             <!-- Change this to a button or input when using this as a form -->
                                 <button type="submit" class="btn btn-lg btn-primary btn-block" name="login">Log in</button>

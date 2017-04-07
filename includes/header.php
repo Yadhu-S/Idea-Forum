@@ -25,7 +25,7 @@ session_start();
     <div class="navbar-header">
         
         <a class="navbar-brand" href="index.php"> 
-            <span class=head><i class="fa fa-home fa-lg" aria-hidden="true"></i> Cite Idea Box  </span>
+            <span class=head><i class="fa fa-home fa-lg" aria-hidden="true"></i> CiTE Idea Box  </span>
       </a>
     </div>
     <ul class="nav navbar-top-links navbar-right">
